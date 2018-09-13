@@ -1,5 +1,7 @@
 package A1Poker;
 
-public class PokerTest {
+import junit.framework.TestCase;
+
+public class PokerTest extends TestCase{
 
 }
