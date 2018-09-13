@@ -10,6 +10,7 @@ public class ArithmeticSolverTest extends TestCase {
 		//The first number after the bracket is what you expect to get from the
 			//Operation solver.METHOD()
 		assertEquals(4.0, solver.add(2, 2));
+		//The code we wrote returns a double thats why we need the 4.0 instead of 4
 	}
 	
 	public void testSubtract() {
