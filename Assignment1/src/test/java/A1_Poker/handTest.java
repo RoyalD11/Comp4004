@@ -7,6 +7,6 @@ public class handTest extends TestCase {
 	public void testHandSize() {
 		Hand playerAIP = new Hand();
 		
-		assertEquals(5, playerAIP.size());
+		assertEquals(5, playerAIP.handSize());
 	}
 }
