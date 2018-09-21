@@ -9,4 +9,10 @@ public class handTest extends TestCase {
 		
 		assertEquals(5, playerAIP.handSize());
 	}
+	
+	public void testHandSizeP2() {
+		Hand playerP2 = new Hand();
+		
+		assertEquals(5, playerP2.handSize());
+	}
 }
