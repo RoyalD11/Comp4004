@@ -5,24 +5,27 @@ import java.util.*;
 
 public class Hand {
 	ArrayList <String> hand = new ArrayList<String>();
+	Scanner sc;
 	
-	public int handSize() {
+	public int drawHand() {
 		
+		for(int i = 0; i<5; i++) {
+			hand.add(i, sc.nextLine());
+		}
+
+		return hand.size();
+	}
+	
+	public void openFile() {
 		try {
-			Scanner sc = new Scanner(new File("src/main/resources/cards.txt"));
-			for(int i = 0; i<5; i++) {
-				hand.add(i, sc.nextLine());
-			}
-			
-			//This for loop prints the arrayList that represents the players hand
-			/*for(int j = 0; j<hand.size();j++) {
-				System.out.println(hand.get(j));
-			}*/
-		
+			sc = new Scanner(new File("src/main/resources/cards.txt"));
 		}
 		catch(FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		return hand.size();
+	}
+	
+	public void closeFile() {
+		sc.close();
 	}
 }

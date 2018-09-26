@@ -7,12 +7,12 @@ public class handTest extends TestCase {
 	public void testHandSize() {
 		Hand playerAIP = new Hand();
 		
-		assertEquals(5, playerAIP.handSize());
+		assertEquals(5, playerAIP.drawHand());
 	}
 	
 	public void testHandSizeP2() {
 		Hand playerP2 = new Hand();
 		
-		assertEquals(5, playerP2.handSize());
+		assertEquals(5, playerP2.drawHand());
 	}
 }
