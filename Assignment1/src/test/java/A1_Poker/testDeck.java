@@ -15,6 +15,8 @@ public class testDeck extends TestCase{
 	public void testCloseFile() {
 		//Creates a deck object from the deck class
 		Deck allCards = new Deck();
+		
+		allCards.openFile("cards.txt");
 
 		//Tests if the file is actually closed
 		assertEquals(true, allCards.closeFile());

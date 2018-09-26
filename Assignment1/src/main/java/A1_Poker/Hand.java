@@ -23,12 +23,4 @@ public class Hand {
 
 		return hand.size();
 	}
-	
-	
-	
-	//Function that will close the text file
-	public boolean closeFile() {
-		sc.close();
-		return true;
-	}
 }

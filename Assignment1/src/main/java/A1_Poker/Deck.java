@@ -8,16 +8,22 @@ public class Deck {
 	Scanner sc;
 	
 	//Function that will open the text file, tries to open it if it fails it prints the error.
-		public boolean openFile(String fileName) {
-			try {
-				//Sets the scanner to be the location of the text file.
-				sc = new Scanner(new File("src/main/resources/" + fileName));
-				return true;
-			}
-			catch(FileNotFoundException e) {
-				e.printStackTrace();
-				return false;
-			}
+	public boolean openFile(String fileName) {
+		try {
+			//Sets the scanner to be the location of the text file.
+			sc = new Scanner(new File("src/main/resources/" + fileName));
+			return true;
 		}
+		catch(FileNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	//Function that will close the text file
+	public boolean closeFile() {
+		sc.close();
+		return true;
+	}
 
 }
