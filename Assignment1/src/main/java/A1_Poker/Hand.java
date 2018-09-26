@@ -7,13 +7,14 @@ public class Hand {
 	
 	//Global variables to be used by all functions in this class. 
 	ArrayList <String> hand = new ArrayList<String>();
+	Deck allCards = new Deck();
 
 	
 	//Function that will draw cards from a text file into the players hands
 	public int drawHand() {
 		
 		for(int i = 0; i<5; i++) {
-			hand.add(i, sc.nextLine());
+			hand.add(i, allCards.sc.nextLine());
 		}
 		
 		for(int i = 0; i<hand.size(); i++) {
