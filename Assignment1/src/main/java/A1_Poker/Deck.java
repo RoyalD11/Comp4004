@@ -25,5 +25,10 @@ public class Deck {
 		sc.close();
 		return true;
 	}
-
+	
+	//Function that will draw cards from a text file into the players hands
+	public String draw() {
+			
+		return sc.nextLine();
+	}
 }

@@ -4,11 +4,16 @@ import junit.framework.TestCase;
 
 public class handTest extends TestCase {
 	
-	public void testHandSize() {
-		Hand playerAIP = new Hand();
+	public void testMaxHandSize() {
 		Hand playerP2 = new Hand();
+		Deck deck = new Deck();
 
-		assertEquals(5, playerAIP.drawHand());
-		assertEquals(5, playerP2.drawHand());
+		for (int i = 0; i<5; i++) {
+			playerP2.hand.add(deck.draw());
+		}
+		
+		
+		assertEquals(5, playerP2.hand.size());
+
 	}
 }

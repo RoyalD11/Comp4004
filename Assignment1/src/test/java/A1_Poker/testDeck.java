@@ -22,4 +22,15 @@ public class testDeck extends TestCase{
 		assertEquals(true, allCards.closeFile());
 
 	}
+	
+	public void testDrawOne() {
+		Hand playerAIP = new Hand();
+		Hand playerP2 = new Hand();
+		Deck deck = new Deck();
+		
+		deck.openFile("cards.txt");
+
+		assertEquals(true, playerAIP.hand.add(deck.draw()));
+		assertEquals(true, playerP2.hand.add(deck.draw()));
+	}
 }
