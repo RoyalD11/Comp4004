@@ -7,6 +7,8 @@ public class handTest extends TestCase {
 	public void testMaxHandSize() {
 		Hand playerP2 = new Hand();
 		Deck deck = new Deck();
+		
+		deck.openFile("cards.txt");
 
 		for (int i = 0; i<5; i++) {
 			playerP2.hand.add(deck.draw());

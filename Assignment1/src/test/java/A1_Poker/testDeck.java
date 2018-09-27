@@ -24,7 +24,7 @@ public class testDeck extends TestCase{
 	}
 	
 	public void testDrawOne() {
-		Hand playerAIP = new Hand();
+		Hand  playerAIP = new Hand();
 		Hand playerP2 = new Hand();
 		Deck deck = new Deck();
 		
