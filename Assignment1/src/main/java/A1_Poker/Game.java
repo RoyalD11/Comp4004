@@ -8,17 +8,24 @@ public class Game {
 		
 		int counter = 0;
 		
-		//Loops through cards in the hand 
+		//Loops through cards in the hand to check for a flush
 		for(int i=1; i<hand.size(); i++) {
-			if(hand.get(i-1).substring(0, 1) != hand.get(i).substring(0, 1)) {
+			
+			//If the first character of any pair of cards is different from one another, break from the loop as that is not a flush
+			if(!(hand.get(i-1).substring(0, 1).equals( hand.get(i).substring(0, 1)))) {
 				break;
 			}
-			if(hand.get(i-1).substring(0, 1) == hand.get(i).substring(0, 1)) {
+			
+			//If the first character of two cards are the same then increment the counter and continue to check
+			if(hand.get(i-1).substring(0, 1).equals( hand.get(i).substring(0, 1))) {
 				counter++;
 			}
+			
+			//If the counter is 4 it means we have 5 cards of the same suit, return true.
 			if(counter == 4) return true;
 		}
 		
+		//return false by default
 		return false;
 	}
 }

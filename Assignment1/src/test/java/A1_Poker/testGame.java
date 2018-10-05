@@ -15,7 +15,6 @@ public class testGame extends TestCase {
 
 		
 		for (int i = 0; i<5; i++) {
-			System.out.println(cards[i]);
 			playerAIP.hand.add(cards[i]);
 		}
 		
