@@ -7,6 +7,7 @@ public class testGame extends TestCase {
 	public void testFlush() {
 		Hand  playerAIP = new Hand();
 		Deck deck = new Deck();
+		Game game = new Game();
 		
 		deck.openFile("cards.txt");
 		
@@ -15,7 +16,7 @@ public class testGame extends TestCase {
 			playerAIP.hand.add(card);
 		}
 		
-		assertEquals(true, flush(playerAIP.hand));
+		assertEquals(true, game.flush(playerAIP.hand));
 	}
 
 }
