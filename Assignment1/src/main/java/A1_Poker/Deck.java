@@ -2,6 +2,7 @@ package A1_Poker;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Deck {
@@ -29,6 +30,13 @@ public class Deck {
 	//Function that will draw cards from a text file into the players hands
 	public String draw() {
 			
-		return sc.nextLine();
+		String [] deckCards = sc.nextLine().split(" ");
+		Random rand = new Random();
+		int index = rand.nextInt(51);
+		
+		System.out.println(deckCards[index]);
+
+		
+		return deckCards[index];
 	}
 }

@@ -25,12 +25,13 @@ public class testDeck extends TestCase{
 	
 	public void testDrawOne() {
 		Hand  playerAIP = new Hand();
-		Hand playerP2 = new Hand();
 		Deck deck = new Deck();
 		
 		deck.openFile("cards.txt");
+		
+		String card = deck.draw();
+		playerAIP.hand.add(card);
 
-		assertEquals(true, playerAIP.hand.add(deck.draw()));
-		assertEquals(true, playerP2.hand.add(deck.draw()));
+		assertEquals(1, playerAIP.hand.size());
 	}
 }
