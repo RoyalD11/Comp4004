@@ -21,7 +21,7 @@ public class testGame extends TestCase {
 		assertEquals(true, game.flush(playerAIP.hand));
 	}
 	
-	public void testDuplicateRank() {
+	public void testFourOfAKind() {
 		Hand  playerAIP = new Hand();
 		Deck deck = new Deck();
 		Game game = new Game();
