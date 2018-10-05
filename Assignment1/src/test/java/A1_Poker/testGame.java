@@ -38,5 +38,41 @@ public class testGame extends TestCase {
 
 		
 	}
+	
+	public void testThreeOfAKind() {
+		Hand  playerAIP = new Hand();
+		Deck deck = new Deck();
+		Game game = new Game();
+		
+		deck.openFile("threeOAC.txt");
+		
+		String cards[] = deck.drawFive();
+		
+		for (int i = 0; i<5; i++) {
+			playerAIP.hand.add(cards[i]);
+		}
+		
+		assertEquals(true, game.duplicateRank(playerAIP.hand));
+
+		
+	}
+	
+	public void testPair() {
+		Hand  playerAIP = new Hand();
+		Deck deck = new Deck();
+		Game game = new Game();
+		
+		deck.openFile("pair.txt");
+		
+		String cards[] = deck.drawFive();
+		
+		for (int i = 0; i<5; i++) {
+			playerAIP.hand.add(cards[i]);
+		}
+		
+		assertEquals(true, game.duplicateRank(playerAIP.hand));
+
+		
+	}
 
 }
