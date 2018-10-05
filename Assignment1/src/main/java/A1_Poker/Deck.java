@@ -32,11 +32,16 @@ public class Deck {
 			
 		String [] deckCards = sc.nextLine().split(" ");
 		Random rand = new Random();
-		int index = rand.nextInt(51);
-		
-		System.out.println(deckCards[index]);
-
+		int index = rand.nextInt(4);
 		
 		return deckCards[index];
+	}
+	
+	public String[] drawFive() {
+		
+		String [] deckCards = sc.nextLine().split(" ");
+
+		
+		return deckCards;
 	}
 }

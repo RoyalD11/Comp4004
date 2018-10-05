@@ -9,11 +9,14 @@ public class testGame extends TestCase {
 		Deck deck = new Deck();
 		Game game = new Game();
 		
-		deck.openFile("cards.txt");
+		deck.openFile("flush.txt");
+		
+		String cards[] = deck.drawFive();
+
 		
 		for (int i = 0; i<5; i++) {
-			String card = deck.draw();
-			playerAIP.hand.add(card);
+			System.out.println(cards[i]);
+			playerAIP.hand.add(cards[i]);
 		}
 		
 		assertEquals(true, game.flush(playerAIP.hand));

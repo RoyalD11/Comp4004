@@ -8,6 +8,7 @@ public class Game {
 		
 		int counter = 0;
 		
+		//Loops through cards in the hand 
 		for(int i=1; i<hand.size(); i++) {
 			if(hand.get(i-1).substring(0, 1) != hand.get(i).substring(0, 1)) {
 				break;
@@ -17,7 +18,6 @@ public class Game {
 			}
 			if(counter == 4) return true;
 		}
-		
 		
 		return false;
 	}
