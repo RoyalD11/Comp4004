@@ -20,5 +20,15 @@ public class testGame extends TestCase {
 		
 		assertEquals(true, game.flush(playerAIP.hand));
 	}
+	
+	public void testDuplicateRank() {
+		Hand  playerAIP = new Hand();
+		Deck deck = new Deck();
+		Game game = new Game();
+		
+		deck.openFile("fourOAC.txt");
+		
+		String cards[] = deck.drawFive();
+	}
 
 }
