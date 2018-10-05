@@ -29,6 +29,14 @@ public class testGame extends TestCase {
 		deck.openFile("fourOAC.txt");
 		
 		String cards[] = deck.drawFive();
+		
+		for (int i = 0; i<5; i++) {
+			playerAIP.hand.add(cards[i]);
+		}
+		
+		assertEquals(true, game.duplicateRank(playerAIP.hand));
+
+		
 	}
 
 }
