@@ -59,7 +59,7 @@ public class Game {
 		for(int i = 0; i<player.hand.size(); i++) {
 			card = player.hand.get(i);
 			
-			if (player.getRank(card).equals("A")) return player.hand.get(i);
+			if (player.getRank(card) == 14) return player.hand.get(i);
 			
 			for(int j = 0; j<player.hand.size(); j++) {
 				

@@ -19,9 +19,14 @@ public class Hand {
 		
 		String strRank = card.substring(1, 2);
 		
-		int rank
+		int rank = 0;
 		
-		if(strRank.equals("1")) strRank = "10";
+		if(strRank.equals("1")) rank = 10;
+		else if(strRank.equals("A")) rank = 14;
+		else if(strRank.equals("K")) rank = 13;
+		else if(strRank.equals("Q")) rank = 12;
+		else if(strRank.equals("J")) rank = 11;
+		else rank = Integer.parseInt(strRank);
 		
 		return rank;
 	}
