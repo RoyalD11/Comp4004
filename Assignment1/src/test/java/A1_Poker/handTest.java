@@ -27,6 +27,6 @@ public class handTest extends TestCase {
 		
 		playerAIP.hand.add(deck.draw());
 		
-		assertEquals("S", playerAIP.hand.getSuit(playerAIP.hand.get(0)));
+		assertEquals("S", playerAIP.getSuit(playerAIP.hand.get(0)));
 	}
 }
