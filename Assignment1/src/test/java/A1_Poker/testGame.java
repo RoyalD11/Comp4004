@@ -89,6 +89,6 @@ public class testGame extends TestCase {
 			playerAIP.hand.add(cards[i]);
 		}
 		
-		assertEquals("SA", game.highCard(playerAIP.hand));
+		assertEquals("SA", game.highCard(playerAIP));
 	}
 }
