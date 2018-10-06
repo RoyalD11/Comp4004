@@ -52,5 +52,19 @@ public class Game {
 		return false;
 	}
 
-	
+	public String highCard(ArrayList<String> hand) {
+		
+		String currentHigh;
+		String previousHigh;
+		
+		for(int i = 0; i<hand.size(); i++) {
+			if (hand.get(i).substring(1,2).equals("A")) return hand.get(i);
+			
+			for(int j = 0; j<hand.size(); j++) {
+				
+			}
+		}
+		
+		return "";
+	}
 }
