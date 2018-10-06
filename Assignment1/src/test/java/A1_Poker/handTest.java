@@ -18,4 +18,15 @@ public class handTest extends TestCase {
 		assertEquals(5, playerP2.hand.size());
 
 	}
+	
+	public void testGetSuit() {
+		Hand playerAIP = new Hand();
+		Deck deck = new Deck();
+		
+		deck.openFile("cards.txt");
+		
+		playerAIP.hand.add(deck.draw());
+		
+		assertEquals("S", playerAIP.hand.getSuit(playerAIP.hand.get(0)));
+	}
 }
