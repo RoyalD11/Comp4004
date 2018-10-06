@@ -8,12 +8,14 @@ public class handTest extends TestCase {
 		Hand playerP2 = new Hand();
 		Deck deck = new Deck();
 		
-		deck.openFile("cards.txt");
+		deck.openFile("flush.txt");
 
-		for (int i = 0; i<5; i++) {
-			playerP2.hand.add(deck.draw());
-		}
+	
+		String cards[] = deck.drawFive();
 		
+		for (int i = 0; i<5; i++) {
+			playerP2.hand.add(cards[i]);
+		}
 		
 		assertEquals(5, playerP2.hand.size());
 

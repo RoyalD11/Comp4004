@@ -41,7 +41,6 @@ public class Deck {
 		
 		String [] deckCards = sc.nextLine().split(" ");
 
-		
 		return deckCards;
 	}
 }
