@@ -27,7 +27,11 @@ public class handTest extends TestCase {
 		
 		deck.openFile("cards.txt");
 		
-		playerAIP.hand.add(deck.draw());
+		String cards[] = deck.drawFive();
+		
+		for (int i = 0; i<5; i++) {
+			playerAIP.hand.add(cards[i]);
+		}
 		
 		assertEquals("S", playerAIP.getSuit(playerAIP.hand.get(0)));
 	}
@@ -38,7 +42,11 @@ public class handTest extends TestCase {
 		
 		deck.openFile("cards.txt");
 		
-		playerAIP.hand.add(deck.draw());
+		String cards[] = deck.drawFive();
+		
+		for (int i = 0; i<5; i++) {
+			playerAIP.hand.add(cards[i]);
+		}
 		
 		assertEquals("A", playerAIP.getRank(playerAIP.hand.get(0)));
 		

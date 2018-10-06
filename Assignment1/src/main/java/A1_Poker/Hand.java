@@ -8,11 +8,13 @@ public class Hand {
 	ArrayList <String> hand = new ArrayList<String>();
 	Deck deck = new Deck();
 	
+	//Returns the suit of the card
 	public String getSuit(String card) {
 		
 		return card.substring(0, 1);
 	}
 	
+	//Returns the rank of the card
 	public String getRank(String card) {
 		
 		String rank = card.substring(1, 2);
