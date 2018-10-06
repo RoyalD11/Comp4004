@@ -75,4 +75,20 @@ public class testGame extends TestCase {
 		
 	}
 
+	public void testHighCard() {
+		Hand  playerAIP = new Hand();
+		Deck deck = new Deck();
+		Game game = new Game();
+		
+		deck.openFile("highCard.txt");
+		
+		String cards[] = deck.drawFive();
+
+		
+		for (int i = 0; i<5; i++) {
+			playerAIP.hand.add(cards[i]);
+		}
+		
+		assertEquals("SA", game.highCard(playerAIP.hand));
+	}
 }

@@ -33,6 +33,8 @@ public class Game {
 		
 		int counter;
 		
+		//Nested for loop that goes through the hand twice comparing ever card to itself, incrementing the counter if the ranks are the same
+		//Reset the counter at the beginning of the outer for loop.
 		for(int i=0; i<hand.size(); i++) {
 			counter = 0;
 			for(int j = 0; j<hand.size(); j++) {
@@ -40,6 +42,8 @@ public class Game {
 					counter++;
 				}
 			}
+			
+			//Will return true if the counter has hit any of these numbers, as that means there is a 4Kind, 3Kind or pair
 			if(counter == 3) return true;
 			else if (counter == 2) return true;
 			else if(counter == 1) return true;
@@ -47,4 +51,6 @@ public class Game {
 		
 		return false;
 	}
+
+	
 }
