@@ -31,4 +31,16 @@ public class handTest extends TestCase {
 		
 		assertEquals("S", playerAIP.getSuit(playerAIP.hand.get(0)));
 	}
+	
+	public void testGetRank() {
+		Hand playerAIP = new Hand();
+		Deck deck = new Deck();
+		
+		deck.openFile("cards.txt");
+		
+		playerAIP.hand.add(deck.draw());
+		
+		assertEquals("A", playerAIP.getRank(playerAIP.hand.get(0)));
+		
+	}
 }
