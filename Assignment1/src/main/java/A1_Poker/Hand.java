@@ -15,11 +15,13 @@ public class Hand {
 	}
 	
 	//Returns the rank of the card
-	public String getRank(String card) {
+	public int getRank(String card) {
 		
-		String rank = card.substring(1, 2);
+		String strRank = card.substring(1, 2);
 		
-		if(rank.equals("1")) rank = "10";
+		int rank
+		
+		if(strRank.equals("1")) strRank = "10";
 		
 		return rank;
 	}

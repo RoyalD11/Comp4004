@@ -52,15 +52,16 @@ public class Game {
 		return false;
 	}
 
-	public String highCard(ArrayList<String> hand) {
+	public String highCard(Hand player) {
 		
-		String currentHigh;
-		String previousHigh;
+		String card = "";
 		
-		for(int i = 0; i<hand.size(); i++) {
-			if (hand.get(i).substring(1,2).equals("A")) return hand.get(i);
+		for(int i = 0; i<player.hand.size(); i++) {
+			card = player.hand.get(i);
 			
-			for(int j = 0; j<hand.size(); j++) {
+			if (player.getRank(card).equals("A")) return player.hand.get(i);
+			
+			for(int j = 0; j<player.hand.size(); j++) {
 				
 			}
 		}
