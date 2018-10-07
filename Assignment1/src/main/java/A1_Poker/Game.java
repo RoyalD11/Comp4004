@@ -57,16 +57,26 @@ public class Game {
 		String card = "";
 		String compareCard = "";
 		
+		String highCard = "";
+		
 		int curHigh = 0;
 		int prevHigh = 0;
+		
 		
 		for(int i = 0; i<player.hand.size(); i++) {
 			card = player.hand.get(i);
 			
 			for(int j = 1; j<player.hand.size(); j++) {
 				compareCard = player.hand.get(j);
+				
 				if(player.getRank(compareCard) == player.getRank(card)) {
-					player.getSuit(compareCard)
+					if(player.getSuit(compareCard) > player.getSuit(card)) {
+						highCard = card; 
+					}
+				}
+				
+				else if(player.getRank(compareCard) > player.getRank(card)) {
+					
 				}
 			}
 			
