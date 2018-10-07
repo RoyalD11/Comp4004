@@ -33,7 +33,7 @@ public class handTest extends TestCase {
 			playerAIP.hand.add(cards[i]);
 		}
 		
-		assertEquals("S", playerAIP.getSuit(playerAIP.hand.get(0)));
+		assertEquals(4, playerAIP.getSuit(playerAIP.hand.get(0)));
 	}
 	
 	public void testGetRank() {

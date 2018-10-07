@@ -9,9 +9,19 @@ public class Hand {
 	Deck deck = new Deck();
 	
 	//Returns the suit of the card
-	public String getSuit(String card) {
+	public int getSuit(String card) {
 		
-		return card.substring(0, 1);
+		String strSuit = card.substring(0, 1);
+		
+		int suit = 0;
+		
+		if(strSuit.equals("S")) suit = 4;
+		else if(strSuit.equals("H")) suit = 3;
+		else if(strSuit.equals("D")) suit = 2;
+		else if(strSuit.equals("C")) suit = 1;
+		
+		return suit;
+		
 	}
 	
 	//Returns the rank of the card
