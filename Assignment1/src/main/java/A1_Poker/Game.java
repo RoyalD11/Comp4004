@@ -55,15 +55,22 @@ public class Game {
 	public String highCard(Hand player) {
 		
 		String card = "";
+		String compareCard = "";
+		
+		int curHigh = 0;
+		int prevHigh = 0;
 		
 		for(int i = 0; i<player.hand.size(); i++) {
 			card = player.hand.get(i);
 			
-			if (player.getRank(card) == 14) return player.hand.get(i);
-			
-			for(int j = 0; j<player.hand.size(); j++) {
-				
+			for(int j = 1; j<player.hand.size(); j++) {
+				compareCard = player.hand.get(j);
+				if(player.getRank(compareCard) == player.getRank(card)) {
+					player.getSuit(compareCard)
+				}
 			}
+			
+			if (player.getRank(card) == 14) return card;
 		}
 		
 		return "";
