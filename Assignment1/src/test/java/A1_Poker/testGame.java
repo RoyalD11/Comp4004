@@ -49,7 +49,7 @@ public class testGame extends TestCase {
 			playerAIP.hand.add(cards[i]);
 		}
 
-		assertEquals(true, game.duplicateRank(playerAIP.hand));
+		assertEquals(true, game.duplicateRank(playerAIP.hand, 4));
 	}
 
 	public void testFullHouse() {
@@ -113,7 +113,7 @@ public class testGame extends TestCase {
 			playerAIP.hand.add(cards[i]);
 		}
 
-		assertEquals(true, game.duplicateRank(playerAIP.hand));
+		assertEquals(true, game.duplicateRank(playerAIP.hand, 3));
 
 	}
 
@@ -130,7 +130,7 @@ public class testGame extends TestCase {
 			playerAIP.hand.add(cards[i]);
 		}
 
-		assertEquals(true, game.duplicateRank(playerAIP.hand));
+		assertEquals(true, game.duplicateRank(playerAIP.hand, 2));
 
 	}
 

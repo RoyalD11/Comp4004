@@ -108,7 +108,7 @@ public class Game {
 		return false;
 	}
 	
-	public boolean duplicateRank(ArrayList<String> hand) {
+	public boolean duplicateRank(ArrayList<String> hand, int pairLength) {
 		
 		int counter;
 		
@@ -123,9 +123,7 @@ public class Game {
 			}
 			
 			//Will return true if the counter has hit any of these numbers, as that means there is a 4Kind, 3Kind or pair
-			if(counter == 3) return true;
-			else if (counter == 2) return true;
-			else if(counter == 1) return true;
+			if(counter == pairLength) return true;
 		}
 		
 		return false;
