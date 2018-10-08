@@ -3,6 +3,13 @@ package A1_Poker;
 import java.util.ArrayList;
 
 public class Game {
+	
+	public boolean straightFlush(Hand player) {
+		
+		if(flush(player.hand) && straight(player)) return true;
+		
+		return false;
+	}
 
 	public boolean flush(ArrayList<String> hand) {
 		
