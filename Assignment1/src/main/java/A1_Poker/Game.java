@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Game {
 	
+	//Poker hands logic functions
 	public boolean royalFlush(Hand player) {
 		
 		//If the hand has a flush, straight and min value of 10 return true
@@ -48,28 +49,7 @@ public class Game {
 		
 		return false;
 	}
-	
-	public int valueOfKind(Hand player, int pairLength) {
 		
-		int counter;
-		int valueOfKind = 0;
-		
-		//Nested loops to find the value of the Kind and not just if there is one
-		for(int i=0; i<player.hand.size(); i++) {
-			counter = 0;
-			for(int j = 0; j<player.hand.size(); j++) {
-				if(player.hand.get(i).substring(1, 2).equals(player.hand.get(j).substring(1, 2))) {
-					counter++;
-					valueOfKind = player.getRank(player.hand.get(i));
-				}
-			}
-			
-			if(counter == pairLength) return valueOfKind;
-		}
-		
-		return 0;
-	}
-	
 	public boolean flush(ArrayList<String> hand) {
 		
 		int counter = 0;
@@ -132,6 +112,35 @@ public class Game {
 		return false;
 	}
 	
+	public boolean twoPair(Hand player) {
+		
+		int alreadyFound = 0;
+		
+		if(duplicateRank(player.hand, 2)) {
+			alreadyFound = valueOfKind(player, 2);
+			
+			int counter;
+			
+			//Nested for loop that goes through the hand twice comparing ever card to itself, incrementing the counter if the ranks are the same
+			//Reset the counter at the beginning of the outer for loop.
+			for(int i=0; i<player.hand.size(); i++) {
+				counter = 0;
+				for(int j = 0; j<player.hand.size(); j++) {
+					if(alreadyFound != player.getRank(player.hand.get(i))) {
+						if(player.hand.get(i).substring(1, 2).equals(player.hand.get(j).substring(1, 2))) {
+							counter++;
+						}
+					}
+				}
+				
+				//Return true if second pair is found, as first pair is found already
+				if(counter == 2) return true;
+			}			
+		}
+		
+		return false;
+	}
+	
 	public boolean duplicateRank(ArrayList<String> hand, int pairLength) {
 		
 		int counter;
@@ -187,4 +196,27 @@ public class Game {
 		}
 		return highCard;
 	}
+
+	//Helper Function
+	public int valueOfKind(Hand player, int pairLength) {
+		
+		int counter;
+		int valueOfKind = 0;
+		
+		//Nested loops to find the value of the Kind and not just if there is one
+		for(int i=0; i<player.hand.size(); i++) {
+			counter = 0;
+			for(int j = 0; j<player.hand.size(); j++) {
+				if(player.hand.get(i).substring(1, 2).equals(player.hand.get(j).substring(1, 2))) {
+					counter++;
+					valueOfKind = player.getRank(player.hand.get(i));
+				}
+			}
+			
+			if(counter == pairLength) return valueOfKind;
+		}
+		
+		return 0;
+	}
+
 }

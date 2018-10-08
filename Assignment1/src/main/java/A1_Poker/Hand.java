@@ -41,6 +41,7 @@ public class Hand {
 		return rank;
 	}
 	
+	//Gets the lowest rank card in the hand
 	public int lowestRank(ArrayList<String> hand) {
 		
 		int lowRank = 0;
