@@ -41,9 +41,11 @@ public class Game {
 		//Initialize Variables
 		int counter = 0;
 
+		//Get the lowest rank using the helper function
 		int lowestRank = player.lowestRank(player.hand);
 		
-		counter++; //Counter will now be at 1 as we've found our potential straight;
+		//Counter will now be at 1 as we've found our potential straight;
+		counter++; 
 		
 		//Checks for an Ace since I have ace hardcoded as the high card, but can work in a straight as the low card
 		if(lowestRank == 2) {

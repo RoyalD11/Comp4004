@@ -64,6 +64,6 @@ public class handTest extends TestCase {
 			playerAIP.hand.add(cards[i]);
 		}
 		
-		assertEquals(14, playerAIP.lowestRank(playerAIP.hand));
+		assertEquals(2, playerAIP.lowestRank(playerAIP.hand));
 	}
 }
