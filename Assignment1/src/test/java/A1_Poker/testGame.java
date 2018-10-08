@@ -53,7 +53,7 @@ public class testGame extends TestCase {
 			playerAIP.hand.add(cards[i]);
 		}
 		
-		assertEquals(true, game.straight(playerAIP.hand));
+		assertEquals(true, game.straight(playerAIP));
 	}
 	
 	public void testThreeOfAKind() {

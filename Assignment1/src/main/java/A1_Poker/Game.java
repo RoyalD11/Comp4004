@@ -29,6 +29,19 @@ public class Game {
 		return false;
 	}
 	
+	public boolean straight(Hand player) {
+
+		int counter = 0;
+		int lowRank = 0;
+		int currRank = 0;
+		
+		for(int i = 1; i<hand.size(); i++) {
+			lowRank = player.
+		}
+		
+		return false;
+	}
+	
 	public boolean duplicateRank(ArrayList<String> hand) {
 		
 		int counter;
