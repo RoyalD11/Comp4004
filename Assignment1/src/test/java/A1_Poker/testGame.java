@@ -65,7 +65,7 @@ public class testGame extends TestCase {
 			playerAIP.hand.add(cards[i]);
 		}
 
-		assertEquals(true, game.fullHouse(playerAIP.hand));
+		assertEquals(true, game.fullHouse(playerAIP));
 	}
 
 	public void testFlush() {

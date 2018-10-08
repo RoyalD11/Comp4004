@@ -20,6 +20,32 @@ public class Game {
 		return false;
 	}
 
+	public boolean fullHouse(Hand player) {
+		
+		int alreadyFound = 0;
+		
+		if(duplicateRank(player.hand)) {
+			
+		}
+		
+		return false;
+	}
+	
+	public int valueOfKind(Hand player) {
+		
+		int value = 0;
+		
+		for(int i=0; i<player.hand.size(); i++) {
+			for(int j = 0; j<player.hand.size(); j++) {
+				if(player.hand.get(i).substring(1, 2).equals(player.hand.get(j).substring(1, 2))) {
+					value = player.getRank(player.hand.get(i));
+				}
+			}
+		}
+
+		return value;
+	}
+	
 	public boolean flush(ArrayList<String> hand) {
 		
 		int counter = 0;
