@@ -24,26 +24,50 @@ public class Game {
 		
 		int alreadyFound = 0;
 		
-		if(duplicateRank(player.hand)) {
+		if(duplicateRank(player.hand, 3)) {
+			alreadyFound = valueOfKind(player, 3);
 			
+			int counter;
+			
+			//Nested for loop that goes through the hand twice comparing ever card to itself, incrementing the counter if the ranks are the same
+			//Reset the counter at the beginning of the outer for loop.
+			for(int i=0; i<player.hand.size(); i++) {
+				counter = 0;
+				for(int j = 0; j<player.hand.size(); j++) {
+					if(alreadyFound != player.getRank(player.hand.get(i))) {
+						if(player.hand.get(i).substring(1, 2).equals(player.hand.get(j).substring(1, 2))) {
+							counter++;
+						}
+					}
+				}
+				
+				//Return true if a pair is found, as a 3 of a kind is already found
+				if(counter == 2) return true;
+			}			
 		}
 		
 		return false;
 	}
 	
-	public int valueOfKind(Hand player) {
+	public int valueOfKind(Hand player, int pairLength) {
 		
-		int value = 0;
+		int counter;
+		int valueOfKind = 0;
 		
+		//Nested loops to find the value of the Kind and not just if there is one
 		for(int i=0; i<player.hand.size(); i++) {
+			counter = 0;
 			for(int j = 0; j<player.hand.size(); j++) {
 				if(player.hand.get(i).substring(1, 2).equals(player.hand.get(j).substring(1, 2))) {
-					value = player.getRank(player.hand.get(i));
+					counter++;
+					valueOfKind = player.getRank(player.hand.get(i));
 				}
 			}
+			
+			if(counter == pairLength) return valueOfKind;
 		}
-
-		return value;
+		
+		return 0;
 	}
 	
 	public boolean flush(ArrayList<String> hand) {
