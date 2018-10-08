@@ -4,6 +4,22 @@ import junit.framework.TestCase;
 
 public class testGame extends TestCase {
 	
+	public void testRoyalFlush() {
+		Hand  playerAIP = new Hand();
+		Deck deck = new Deck();
+		Game game = new Game();
+		
+		deck.openFile("royalFlush.txt");
+		
+		String cards[] = deck.drawFive();
+		
+		for (int i = 0; i<5; i++) {
+			playerAIP.hand.add(cards[i]);
+		}
+		
+		assertEquals(true, game.royalFlush(playerAIP));
+	}
+	
 	public void testStrightFlush() {
 		Hand  playerAIP = new Hand();
 		Deck deck = new Deck();
