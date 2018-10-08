@@ -117,6 +117,22 @@ public class testGame extends TestCase {
 
 	}
 
+	public void testTwoPair() {
+		Hand playerAIP = new Hand();
+		Deck deck = new Deck();
+		Game game = new Game();
+
+		deck.openFile("twoPair.txt");
+
+		String cards[] = deck.drawFive();
+
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.add(cards[i]);
+		}
+
+		assertEquals(true, game.twoPair(playerAIP));
+	}
+	
 	public void testPair() {
 		Hand playerAIP = new Hand();
 		Deck deck = new Deck();
