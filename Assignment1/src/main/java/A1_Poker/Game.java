@@ -40,23 +40,8 @@ public class Game {
 
 		//Initialize Variables
 		int counter = 0;
-		int lowRank = 0;
-		int currRank = 0;
-		int lowestRank = 15;
-		
-		//Loop through the hand looking for the lowest card in the hand, this will be the starting point
-		for(int i = 1; i<player.hand.size(); i++) {
-			lowRank = player.getRank(player.hand.get(i-1));
-			currRank = player.getRank(player.hand.get(i));
-			
-			if(lowRank > currRank) {
-				if(lowestRank > currRank) lowestRank = currRank;
-			}
-			else if(currRank > lowRank){
-				if(lowestRank > lowRank) lowestRank = lowRank;
-			}
-			else return false;
-		}
+
+		int lowestRank = player.lowestRank(player.hand);
 		
 		counter++; //Counter will now be at 1 as we've found our potential straight;
 		

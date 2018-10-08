@@ -40,4 +40,26 @@ public class Hand {
 		
 		return rank;
 	}
+	
+	public int lowestRank(ArrayList<String> hand) {
+		
+		int lowRank = 0;
+		int currRank = 0;
+		int lowestRank = 15;
+		
+		//Loop through the hand looking for the lowest card in the hand, this will be the starting point
+		for(int i = 1; i<hand.size(); i++) {
+			lowRank = getRank(hand.get(i-1));
+			currRank = getRank(hand.get(i));
+			
+			if(lowRank > currRank) {
+				if(lowestRank >= currRank) lowestRank = currRank;
+			}
+			else if(currRank > lowRank){
+				if(lowestRank >= lowRank) lowestRank = lowRank;
+			}
+		}
+		
+		return lowestRank;
+	}
 }
