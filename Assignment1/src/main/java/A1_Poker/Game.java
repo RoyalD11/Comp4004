@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 public class Game {
 	
+	public boolean royalFlush(Hand player) {
+		
+		if(flush(player.hand) && straight(player) && (player.lowestRank(player.hand) == 10)) return true;
+		
+		return false;
+	}
+	
 	public boolean straightFlush(Hand player) {
 		
 		if(flush(player.hand) && straight(player)) return true;
