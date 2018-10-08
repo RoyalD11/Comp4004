@@ -17,7 +17,7 @@ public class testGame extends TestCase {
 			playerAIP.hand.add(cards[i]);
 		}
 		
-		assertEquals(true, game.straightFlush(playerAIP.hand));
+		assertEquals(true, game.straightFlush(playerAIP));
 	}
 	
 	public void testFourOfAKind() {
