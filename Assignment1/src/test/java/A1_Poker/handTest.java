@@ -51,4 +51,19 @@ public class handTest extends TestCase {
 		assertEquals(14, playerAIP.getRank(playerAIP.hand.get(0)));
 		
 	}
+	
+	public void testLowestRank() {
+		Hand playerAIP = new Hand();
+		Deck deck = new Deck();
+		
+		deck.openFile("lowestRank.txt");
+		
+		String cards[] = deck.drawFive();
+		
+		for (int i = 0; i<5; i++) {
+			playerAIP.hand.add(cards[i]);
+		}
+		
+		assertEquals(14, playerAIP.lowestRank(playerAIP.hand));
+	}
 }
