@@ -54,35 +54,36 @@ public class Game {
 
 	public String highCard(Hand player) {
 		
-		String card = "";
-		String compareCard = "";
-		
+		String compareCard = "";		
 		String highCard = "";
 		
-		int curHigh = 0;
-		int prevHigh = 0;
-		
-		
-		for(int i = 0; i<player.hand.size(); i++) {
-			card = player.hand.get(i);
+		//Loop through the hand
+		for(int i = 1; i<player.hand.size(); i++) {
 			
-			for(int j = 1; j<player.hand.size(); j++) {
-				compareCard = player.hand.get(j);
-				
-				if(player.getRank(compareCard) == player.getRank(card)) {
-					if(player.getSuit(compareCard) > player.getSuit(card)) {
-						highCard = card; 
-					}
+			//Set the initial values to the appropriate cards
+			highCard = player.hand.get(i-1);
+			compareCard = player.hand.get(i);
+			
+			//If the cards have the same rank then compare the suits and save the appropriate high card based off the check
+			if(player.getRank(highCard) == player.getRank(compareCard)) {
+				if(player.getSuit(highCard) > player.getSuit(compareCard)) {
+					continue;
 				}
-				
-				else if(player.getRank(compareCard) > player.getRank(card)) {
-					
+				else {
+					highCard = compareCard;
 				}
 			}
 			
-			if (player.getRank(card) == 14) return card;
+			//Do nothing if the highCard is higher than the one you're comparing
+			else if(player.getRank(highCard) > player.getRank(compareCard)) {
+				continue;
+			}
+			
+			//Changed highCard to compareCard if it is lower than the one you are comparing it to
+			else if(player.getRank(highCard) < player.getRank(compareCard)) {
+				highCard = compareCard;
+			}
 		}
-		
-		return "";
+		return highCard;
 	}
 }
