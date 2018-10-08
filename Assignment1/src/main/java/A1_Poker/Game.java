@@ -31,14 +31,51 @@ public class Game {
 	
 	public boolean straight(Hand player) {
 
+		//Initialize Variables
 		int counter = 0;
 		int lowRank = 0;
 		int currRank = 0;
+		int lowestRank = 15;
 		
-		for(int i = 1; i<hand.size(); i++) {
-			lowRank = player.
+		//Loop through the hand looking for the lowest card in the hand, this will be the starting point
+		for(int i = 1; i<player.hand.size(); i++) {
+			lowRank = player.getRank(player.hand.get(i-1));
+			currRank = player.getRank(player.hand.get(i));
+			
+			if(lowRank > currRank) {
+				if(lowestRank > currRank) lowestRank = currRank;
+			}
+			else if(currRank > lowRank){
+				if(lowestRank > lowRank) lowestRank = lowRank;
+			}
+			else return false;
 		}
 		
+		counter++; //Counter will now be at 1 as we've found our potential straight;
+		
+		//Checks for an Ace since I have ace hardcoded as the high card, but can work in a straight as the low card
+		if(lowestRank == 2) {
+			for(int j = 0; j<player.hand.size(); j++) {
+				if(player.getRank(player.hand.get(j)) == 14) counter++; //As this will represent A, 2, ... in our straight
+			}
+		}
+		
+		//Loops through the hand looking for the next card in the straight
+		for(int i = 0; i<player.hand.size(); i++) {
+			for(int j = 0; j<player.hand.size(); j++) {
+				
+				//If the next card in the straight is found increment the counter and change the lowest rank
+				if(player.getRank(player.hand.get(j)) == lowestRank + 1) {
+					counter++;
+					lowestRank = player.getRank(player.hand.get(j));
+				}
+			}
+		}
+		
+		//Will return true if there is a straight
+		if(counter == 5) return true;
+
+		//Default
 		return false;
 	}
 	
