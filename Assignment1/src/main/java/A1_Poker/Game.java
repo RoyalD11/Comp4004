@@ -6,6 +6,7 @@ public class Game {
 	
 	public boolean royalFlush(Hand player) {
 		
+		//If the hand has a flush, straight and min value of 10 return true
 		if(flush(player.hand) && straight(player) && (player.lowestRank(player.hand) == 10)) return true;
 		
 		return false;
@@ -13,6 +14,7 @@ public class Game {
 	
 	public boolean straightFlush(Hand player) {
 		
+		//If the hand has a flush, and a straight return true
 		if(flush(player.hand) && straight(player)) return true;
 		
 		return false;
