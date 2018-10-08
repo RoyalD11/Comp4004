@@ -4,6 +4,24 @@ import junit.framework.TestCase;
 
 public class testGame extends TestCase {
 	
+	public void testFourOfAKind() {
+		Hand  playerAIP = new Hand();
+		Deck deck = new Deck();
+		Game game = new Game();
+		
+		deck.openFile("fourOAC.txt");
+		
+		String cards[] = deck.drawFive();
+		
+		for (int i = 0; i<5; i++) {
+			playerAIP.hand.add(cards[i]);
+		}
+		
+		assertEquals(true, game.duplicateRank(playerAIP.hand));
+
+		
+	}
+	
 	public void testFlush() {
 		Hand  playerAIP = new Hand();
 		Deck deck = new Deck();
@@ -21,22 +39,21 @@ public class testGame extends TestCase {
 		assertEquals(true, game.flush(playerAIP.hand));
 	}
 	
-	public void testFourOfAKind() {
+	public void testStraight() {
 		Hand  playerAIP = new Hand();
 		Deck deck = new Deck();
 		Game game = new Game();
 		
-		deck.openFile("fourOAC.txt");
+		deck.openFile("straight.txt");
 		
 		String cards[] = deck.drawFive();
+
 		
 		for (int i = 0; i<5; i++) {
 			playerAIP.hand.add(cards[i]);
 		}
 		
-		assertEquals(true, game.duplicateRank(playerAIP.hand));
-
-		
+		assertEquals(true, game.straight(playerAIP.hand));
 	}
 	
 	public void testThreeOfAKind() {
