@@ -201,7 +201,11 @@ public class Game {
 	//Strategy Method
 	public String strategy(Hand player) {
 		
+		//Branch one
 		if(straight(player) || flush(player.hand) || fullHouse(player) || straightFlush(player) || royalFlush(player)) return "First Branch";
+		
+		//Branch two
+		else if(false){}
 			
 		
 		return "Missed Everything";
