@@ -171,6 +171,7 @@ public class testGame extends TestCase {
 		Game game = new Game();
 		
 		game.deck.openFile("strategy.txt");
+		
 
 		//Branch one test
 		String cards[] = game.deck.drawFive();
@@ -200,13 +201,10 @@ public class testGame extends TestCase {
 			playerAIP.hand.remove(0);
 		}
 		
+		game.deck.populateDeck();
 		
 		//Branch three test
-		cards = game.deck.drawFive();
-		
-		for (int i = 0; i < 5; i++) {
-			playerAIP.hand.add(cards[i]);
-		}
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
 		
 		assertEquals("Third Branch", game.strategy(playerAIP));
 		

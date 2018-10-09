@@ -2,11 +2,13 @@ package A1_Poker;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Deck {
 	Scanner sc;
+	ArrayList<String> fullDeck = new ArrayList<String>();
 	
 	//Function that will open the text file, tries to open it if it fails it prints the error.
 	public boolean openFile(String fileName) {
@@ -27,14 +29,30 @@ public class Deck {
 		return true;
 	}
 	
-	//Function that will draw cards from a text file into the players hands
+	public void populateDeck() {
+		
+		String [] deckCards = sc.nextLine().split(" ");
+		
+		for(int i = 0; i<deckCards.length; i++) {
+			fullDeck.add(deckCards[i]);
+		}		
+	}
+	
+	//Function that will draw cards
 	public String draw() {
 			
-		String [] deckCards = sc.nextLine().split(" ");
-		Random rand = new Random();
-		int index = rand.nextInt(51);
+		//Random rand = new Random();
 		
-		return deckCards[index];
+		//int deckSize = fullDeck.size();
+		
+		//int index = rand.nextInt(deckSize - 1);
+		int index = 0;
+		
+		String card = fullDeck.get(index);
+		
+		fullDeck.remove(index);
+		
+		return card;
 	}
 	
 	public String[] drawFive() {
@@ -42,5 +60,14 @@ public class Deck {
 		String [] deckCards = sc.nextLine().split(" ");
 
 		return deckCards;
+	}
+	
+	public ArrayList<String> drawFiveFromDeck(Hand player) {
+		
+		for(int i = 0; i<5; i++) {
+			player.hand.add(draw());
+		}
+		
+		return player.hand;
 	}
 }
