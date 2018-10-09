@@ -32,7 +32,7 @@ public class Deck {
 			
 		String [] deckCards = sc.nextLine().split(" ");
 		Random rand = new Random();
-		int index = rand.nextInt(4);
+		int index = rand.nextInt(51);
 		
 		return deckCards[index];
 	}

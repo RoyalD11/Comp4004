@@ -165,4 +165,22 @@ public class testGame extends TestCase {
 
 		assertEquals("SA", game.highCard(playerAIP));
 	}
+
+	public void testStrategy() {
+		Hand playerAIP = new Hand();
+		Deck deck = new Deck();
+		Game game = new Game();
+		
+		deck.openFile("strategy.txt");
+
+		String cards[] = deck.drawFive();
+
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.add(cards[i]);
+		}
+		
+		assertEquals("First Branch", game.strategy(playerAIP));
+		
+	}
+
 }
