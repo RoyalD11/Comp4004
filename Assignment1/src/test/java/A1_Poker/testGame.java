@@ -132,7 +132,7 @@ public class testGame extends TestCase {
 
 		assertEquals(true, game.twoPair(playerAIP));
 	}
-	
+
 	public void testPair() {
 		Hand playerAIP = new Hand();
 		Deck deck = new Deck();
@@ -169,56 +169,54 @@ public class testGame extends TestCase {
 	public void testStrategy() {
 		Hand playerAIP = new Hand();
 		Game game = new Game();
-		
-		game.deck.openFile("strategy.txt");
-		
 
-		//Branch one test
+		game.deck.openFile("strategy.txt");
+
+		// Branch one test
 		String cards[] = game.deck.drawFive();
 
 		for (int i = 0; i < 5; i++) {
 			playerAIP.hand.add(cards[i]);
 		}
-		
+
 		assertEquals("First Branch", game.strategy(playerAIP));
+
 		
-		
-		//Branch two test
+		// Branch two test
 		for (int i = 0; i < 5; i++) {
 			playerAIP.hand.remove(0);
 		}
-		
+
 		cards = game.deck.drawFive();
-		
+
 		for (int i = 0; i < 5; i++) {
 			playerAIP.hand.add(cards[i]);
 		}
-		
-		//assertEquals("Second Branch", game.strategy(playerAIP));
-		
-		
-		//Branch three test
-		for (int i = 0; i < 5; i++) {
-			playerAIP.hand.remove(0);
-		}
-		
-		game.deck.populateDeck();
-		
-		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
-		
-		assertEquals("Third Branch", game.strategy(playerAIP));
-		
-		
-		//Branch four test
-		for (int i = 0; i < 5; i++) {
-			playerAIP.hand.remove(0);
-		}
-		
-		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
-		
-		assertEquals("Fourth Branch", game.strategy(playerAIP));
+
+		// assertEquals("Second Branch", game.strategy(playerAIP));
 
 		
+		// Branch three test
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.remove(0);
+		}
+
+		game.deck.populateDeck();
+
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+
+		assertEquals("Third Branch", game.strategy(playerAIP));
+
+		
+		// Branch four test
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.remove(0);
+		}
+
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+
+		assertEquals("Fourth Branch", game.strategy(playerAIP));
+
 	}
 
 }
