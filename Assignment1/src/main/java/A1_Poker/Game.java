@@ -206,7 +206,10 @@ public class Game {
 		
 		//Branch two
 		else if(false){}
+		
+		else if(threeRank(player)) {
 			
+		}
 		
 		return "Missed Everything";
 	}
@@ -233,4 +236,8 @@ public class Game {
 		return 0;
 	}
 
+	public boolean threeRanks(Hand hand) {
+		
+		return false;
+	}
 }
