@@ -182,12 +182,12 @@ public class testGame extends TestCase {
 		
 		assertEquals("First Branch", game.strategy(playerAIP));
 		
+		
+		//Branch two test
 		for (int i = 0; i < 5; i++) {
 			playerAIP.hand.remove(0);
 		}
 		
-		
-		//Branch two test
 		cards = game.deck.drawFive();
 		
 		for (int i = 0; i < 5; i++) {
@@ -197,17 +197,27 @@ public class testGame extends TestCase {
 		//assertEquals("Second Branch", game.strategy(playerAIP));
 		
 		
+		//Branch three test
 		for (int i = 0; i < 5; i++) {
 			playerAIP.hand.remove(0);
 		}
 		
 		game.deck.populateDeck();
 		
-		//Branch three test
 		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
 		
 		assertEquals("Third Branch", game.strategy(playerAIP));
 		
+		
+		//Branch four test
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.remove(0);
+		}
+		
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		assertEquals("Fourth Branch", game.strategy(playerAIP));
+
 		
 	}
 
