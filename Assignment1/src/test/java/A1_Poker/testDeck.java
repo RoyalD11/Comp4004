@@ -28,6 +28,7 @@ public class testDeck extends TestCase{
 		Deck deck = new Deck();
 		
 		deck.openFile("cards.txt");
+		deck.populateDeck();
 		
 		String card = deck.draw();
 		playerAIP.hand.add(card);

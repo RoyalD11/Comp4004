@@ -203,15 +203,19 @@ public class Game {
 	//Strategy Method
 	public String strategy(Hand player) {
 		
-		//Branch one
+		//Branch one - If the player already has a good hand do not do anything
 		if(straight(player) || flush(player.hand) || fullHouse(player) || straightFlush(player) || royalFlush(player)) return "First Branch";
 		
-		//Branch two
+		//Branch two - One away
 		else if(false){}
 		
+		//Branch three - Three of the same suit, exchange two cards
 		else if(threeRank(player, 3)) {
+			
+			//Calls helper function that will get the suit of the almost flush
 			int suit = player.getSuit(returnSuit(player, 3));			
 			
+			//Loop through hand and remove the cards that don't match the suit we need and draw again
 			for(int i = 0; i<player.hand.size();i++) {
 				if(player.getSuit(player.hand.get(i)) != suit) {
 					player.hand.remove(i);
@@ -248,6 +252,7 @@ public class Game {
 		return 0;
 	}
 
+	//Used for strategy branch 3 - finds if there is a flush of 3 cards
 	public boolean threeRank(Hand player, int breakPoint) {
 		
 		int counter;
@@ -262,13 +267,14 @@ public class Game {
 				}
 			}
 			
-			//Will return true if the counter has hit any of these numbers, as that means there is a the cards we're looking for
+			//Will return true if the counter has hit any of the break point, as that means there is a the cards we're looking for
 			if(counter == breakPoint) return true;
 		}
 		
 		return false;
 	}
 	
+	//Used for strategy branch 3 - returns the suit of the flush of 3 cards
 	public String returnSuit(Hand player, int breakPoint) {
 		
 		int counter;
@@ -285,7 +291,7 @@ public class Game {
 				}
 			}
 			
-			//Will return true if the counter has hit any of these numbers, as that means there is a the cards we're looking for
+			//Will return true if the counter has hit any of the break point, as that means there is a the cards we're looking for
 			if(counter == breakPoint) return suit;
 		}
 		
