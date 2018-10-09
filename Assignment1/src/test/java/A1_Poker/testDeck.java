@@ -12,6 +12,7 @@ public class testDeck extends TestCase{
 		assertEquals(true, allCards.openFile("cards.txt"));
 	}
 	
+	//Tests closing an open file
 	public void testCloseFile() {
 		//Creates a deck object from the deck class
 		Deck allCards = new Deck();
@@ -23,6 +24,7 @@ public class testDeck extends TestCase{
 
 	}
 	
+	//Tests Drawing one card
 	public void testDrawOne() {
 		Hand  playerAIP = new Hand();
 		Deck deck = new Deck();

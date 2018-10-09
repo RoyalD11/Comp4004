@@ -223,9 +223,10 @@ public class Game {
 				}
 			}
 			
-			return "Third Branch";
-			
+			return "Third Branch";	
 		}
+		
+		//Branch four - Three of the same rank, exchange two cards
 		
 		return "Missed Everything";
 	}
