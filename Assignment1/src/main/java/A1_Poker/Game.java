@@ -197,6 +197,16 @@ public class Game {
 		return highCard;
 	}
 
+	
+	//Strategy Method
+	public String strategy(Hand player) {
+		
+		if(straight(player) || flush(player.hand) || fullHouse(player) || straightFlush(player) || royalFlush(player)) return "First Branch";
+			
+		
+		return "Missed Everything";
+	}
+	
 	//Helper Function
 	public int valueOfKind(Hand player, int pairLength) {
 		
