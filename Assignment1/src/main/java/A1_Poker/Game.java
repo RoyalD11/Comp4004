@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Game {
 	
+	Deck deck = new Deck();
+	
 	//Poker hands logic functions
 	public boolean royalFlush(Hand player) {
 		
@@ -207,7 +209,30 @@ public class Game {
 		//Branch two
 		else if(false){}
 		
-		else if(threeRank(player)) {
+		else if(threeRank(player, 3)) {
+			int suit = player.getSuit(returnSuit(player, 3));
+			
+			for(int i = 0; i<player.hand.size();i++) {
+				System.out.println(player.hand.get(i));
+			}
+			
+			System.out.println("Before");
+			
+			
+			for(int i = 0; i<player.hand.size();i++) {
+				if(player.getSuit(player.hand.get(i)) != suit) {
+					player.hand.remove(1);
+					player.hand.add(i, deck.draw());
+				}
+			}
+			
+			for(int i = 0; i<player.hand.size();i++) {
+				System.out.println(player.hand.get(i));
+			}
+			
+			System.out.println("After");
+			
+			return "Third Branch";
 			
 		}
 		
@@ -236,8 +261,47 @@ public class Game {
 		return 0;
 	}
 
-	public boolean threeRanks(Hand hand) {
+	public boolean threeRank(Hand player, int breakPoint) {
+		
+		int counter;
+		
+		//Nested for loop that goes through the hand twice comparing ever card to itself, incrementing the counter if the ranks are the same
+		//Reset the counter at the beginning of the outer for loop.
+		for(int i=0; i<player.hand.size(); i++) {
+			counter = 0;
+			for(int j = 0; j<player.hand.size(); j++) {
+				if(player.hand.get(i).substring(0, 1).equals(player.hand.get(j).substring(0, 1))) {
+					counter++;
+				}
+			}
+			
+			//Will return true if the counter has hit any of these numbers, as that means there is a the cards we're looking for
+			if(counter == breakPoint) return true;
+		}
 		
 		return false;
+	}
+	
+	public String returnSuit(Hand player, int breakPoint) {
+		
+		int counter;
+		String suit = "";
+		
+		//Nested for loop that goes through the hand twice comparing ever card to itself, incrementing the counter if the ranks are the same
+		//Reset the counter at the beginning of the outer for loop.
+		for(int i=0; i<player.hand.size(); i++) {
+			counter = 0;
+			for(int j = 0; j<player.hand.size(); j++) {
+				if(player.hand.get(i).substring(0, 1).equals(player.hand.get(j).substring(0, 1))) {
+					counter++;
+					suit = player.hand.get(i);
+				}
+			}
+			
+			//Will return true if the counter has hit any of these numbers, as that means there is a the cards we're looking for
+			if(counter == breakPoint) return suit;
+		}
+		
+		return "";
 	}
 }
