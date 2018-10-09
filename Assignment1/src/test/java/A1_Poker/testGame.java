@@ -197,6 +197,20 @@ public class testGame extends TestCase {
 		assertEquals("Second Branch", game.strategy(playerAIP));
 		
 		
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.remove(0);
+		}
+		
+		
+		//Branch three test
+		cards = deck.drawFive();
+		
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.add(cards[i]);
+		}
+		
+		assertEquals("Third Branch", game.strategy(playerAIP));
+		
 		
 	}
 
