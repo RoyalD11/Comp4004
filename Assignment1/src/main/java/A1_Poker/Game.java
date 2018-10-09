@@ -210,7 +210,7 @@ public class Game {
 		else if(false){}
 		
 		//Branch three - Three of the same suit, exchange two cards
-		else if(threeRank(player, 3)) {
+		else if(threeSuit(player, 3)) {
 			
 			//Calls helper function that will get the suit of the almost flush
 			int suit = player.getSuit(returnSuit(player, 3));			
@@ -227,6 +227,22 @@ public class Game {
 		}
 		
 		//Branch four - Three of the same rank, exchange two cards
+		else if(threeRank(player, 3)) {
+			
+			//Calls helper function that will get the suit of the almost flush
+			int rank = returnRank(player, 3);			
+			
+			//Loop through hand and remove the cards that don't match the suit we need and draw again
+			for(int i = 0; i<player.hand.size();i++) {
+				if(player.getRank(player.hand.get(i)) != rank) {
+					player.hand.remove(i);
+					player.hand.add(i, deck.draw());
+				}
+			}
+			
+			return "Fourth Branch";
+			
+		}
 		
 		return "Missed Everything";
 	}
@@ -254,7 +270,7 @@ public class Game {
 	}
 
 	//Used for strategy branch 3 - finds if there is a flush of 3 cards
-	public boolean threeRank(Hand player, int breakPoint) {
+	public boolean threeSuit(Hand player, int breakPoint) {
 		
 		int counter;
 		
@@ -297,5 +313,51 @@ public class Game {
 		}
 		
 		return "";
+	}
+
+	//Used for strategy branch 4 - finds if there is a kind of 3 ranks
+	public boolean threeRank(Hand player, int breakPoint) {
+		
+		int counter;
+		
+		//Nested for loop that goes through the hand twice comparing ever card to itself, incrementing the counter if the ranks are the same
+		//Reset the counter at the beginning of the outer for loop.
+		for(int i=0; i<player.hand.size(); i++) {
+			counter = 0;
+			for(int j = 0; j<player.hand.size(); j++) {
+				if(player.hand.get(i).substring(1, 2).equals(player.hand.get(j).substring(1, 2))) {
+					counter++;
+				}
+			}
+			
+			//Will return true if the counter has hit any of the break point, as that means there is a the cards we're looking for
+			if(counter == breakPoint) return true;
+		}
+		
+		return false;
+	}
+
+	//Used for strategy branch 4 - returns the rank of the kind of 3 cards
+	public int returnRank(Hand player, int breakPoint) {
+		
+		int counter;
+		int rank = 0;
+		
+		//Nested for loop that goes through the hand twice comparing ever card to itself, incrementing the counter if the ranks are the same
+		//Reset the counter at the beginning of the outer for loop.
+		for(int i=0; i<player.hand.size(); i++) {
+			counter = 0;
+			for(int j = 0; j<player.hand.size(); j++) {
+				if(player.hand.get(i).substring(1, 2).equals(player.hand.get(j).substring(1, 2))) {
+					counter++;
+					rank = player.getRank(player.hand.get(i));
+				}
+			}
+			
+			//Will return true if the counter has hit any of the break point, as that means there is a the cards we're looking for
+			if(counter == breakPoint) return rank;
+		}
+		
+		return rank;
 	}
 }
