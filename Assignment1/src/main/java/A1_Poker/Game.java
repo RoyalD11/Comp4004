@@ -210,27 +210,14 @@ public class Game {
 		else if(false){}
 		
 		else if(threeRank(player, 3)) {
-			int suit = player.getSuit(returnSuit(player, 3));
-			
-			for(int i = 0; i<player.hand.size();i++) {
-				System.out.println(player.hand.get(i));
-			}
-			
-			System.out.println("Before");
-			
+			int suit = player.getSuit(returnSuit(player, 3));			
 			
 			for(int i = 0; i<player.hand.size();i++) {
 				if(player.getSuit(player.hand.get(i)) != suit) {
-					player.hand.remove(1);
+					player.hand.remove(i);
 					player.hand.add(i, deck.draw());
 				}
 			}
-			
-			for(int i = 0; i<player.hand.size();i++) {
-				System.out.println(player.hand.get(i));
-			}
-			
-			System.out.println("After");
 			
 			return "Third Branch";
 			
