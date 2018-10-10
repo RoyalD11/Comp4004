@@ -414,7 +414,7 @@ public class testGame extends TestCase {
 		game.scoring(playerAIP);
 		game.scoring(playerP2);
 		
-		System.out.println("\n\n\nFour of a Kind vs. Straight Flush");
+		System.out.println("\n\n\nStraight Flush vs. Four of a Kind");
 		System.out.println("---------------------------------");
 		assertEquals("P2", game.determineWinner(playerAIP, playerP2));
 
