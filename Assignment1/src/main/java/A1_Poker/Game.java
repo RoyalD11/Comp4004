@@ -225,7 +225,7 @@ public class Game {
 
 		
 		// Branch two - One away
-		else if (false) {}
+		else if (false) return "Second Branch";
 
 		
 		// Branch three - Three of the same suit, exchange two cards
@@ -267,7 +267,7 @@ public class Game {
 		
 		
 		// Branch Five - Three cards in sequence
-		else if(false) {}
+		else if(false) return "Fifth Branch";
 		
 		
 		//Branch Six - 2 pairs, exchange the other card
@@ -347,8 +347,6 @@ public class Game {
 			
 			return "Eighth Branch";
 		}
-		
-		return "Broken";
 	}
 
 	// Helper Function
@@ -501,5 +499,5 @@ public class Game {
 
 		return rank;
 	}
-
+	
 }
