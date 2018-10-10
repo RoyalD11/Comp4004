@@ -145,7 +145,7 @@ public class testGame extends TestCase {
 		for (int i = 0; i < 5; i++) {
 			playerAIP.hand.add(cards[i]);
 		}
-
+		
 		assertEquals(true, game.twoPair(playerAIP));
 	}
 
@@ -193,8 +193,43 @@ public class testGame extends TestCase {
 		// Branch one test
 		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
 
+		System.out.println("Inside Strategy Test Branch 1\n-----------------------------");
+		
 		assertEquals("First Branch", game.strategy(playerAIP));
 
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.remove(0);
+		}
+
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		assertEquals("First Branch", game.strategy(playerAIP));
+
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.remove(0);
+		}
+
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		assertEquals("First Branch", game.strategy(playerAIP));
+		
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.remove(0);
+		}
+
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		assertEquals("First Branch", game.strategy(playerAIP));
+		
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.remove(0);
+		}
+
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		assertEquals("First Branch", game.strategy(playerAIP));
+		
+		
 		
 		// Branch two test
 		for (int i = 0; i < 5; i++) {
@@ -202,6 +237,9 @@ public class testGame extends TestCase {
 		}
 
 		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		System.out.println("\nInside Strategy Test Branch 2\n-----------------------------\n\n");
+
 
 		// assertEquals("Second Branch", game.strategy(playerAIP));
 
