@@ -218,11 +218,39 @@ public class Game {
 
 	// Strategy Method
 	public String strategy(Hand player) {
-
+		
 		// Branch one - If the player already has a good hand do not do anything
-		if (straight(player) || flush(player.hand) || fullHouse(player) || straightFlush(player) || royalFlush(player))
+		if (straight(player) || flush(player.hand) || fullHouse(player) || straightFlush(player) || royalFlush(player)) {
+			
+			if(royalFlush(player)) {
+				System.out.println("Hold. Detected a Royal Flush.");
+				player.printHand();
+			}
+			
+			else if(straightFlush(player)) {
+				System.out.println("Hold. Detected a Straight Flush.");
+				player.printHand();
+			}
+			
+			else if(fullHouse(player)) {
+				System.out.println("Hold. Detected a Full House.");
+				player.printHand();
+			}
+			
+			else if(flush(player.hand)) {
+				System.out.println("Hold. Detected a Flush.");
+				player.printHand();
+			}
+			
+			else if(straight(player)) {
+				System.out.println("Hold. Detected a Straight.");
+				player.printHand();
+			}
+			
+			
+			
 			return "First Branch";
-
+		}
 		
 		// Branch two - One away
 		else if (false) return "Second Branch";

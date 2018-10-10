@@ -8,6 +8,16 @@ public class Hand {
 	ArrayList <String> hand = new ArrayList<String>();
 	Deck deck = new Deck();
 	
+	//Print the hand
+	public void printHand() {
+		System.out.print("PlayerAIP's Hand: ");
+		for(int i = 0; i<hand.size(); i++) {
+			System.out.print(hand.get(i) + " ");
+		}
+		System.out.print("\n\n");
+
+	}
+	
 	//Returns the suit of the card
 	public int getSuit(String card) {
 		
