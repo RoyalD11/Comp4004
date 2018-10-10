@@ -70,18 +70,34 @@ public class testGame extends TestCase {
 
 	public void testFlush() {
 		Hand playerAIP = new Hand();
+		Hand playerP2 = new Hand();
 		Deck deck = new Deck();
 		Game game = new Game();
 
 		deck.openFile("flush.txt");
 
 		String cards[] = deck.drawFive();
+		String cards2[] = deck.drawFive();
 
 		for (int i = 0; i < 5; i++) {
 			playerAIP.hand.add(cards[i]);
+			playerP2.hand.add(cards2[i]);
 		}
 
 		assertEquals(true, game.flush(playerAIP.hand));
+		assertEquals(false, game.flush(playerP2.hand));
+		
+		System.out.println("\n\n\nInside Flush Test\n-----------------\nPlayerAIP's Hand: ");
+		
+		for (int i = 0; i < 5; i++) {
+			System.out.print(playerAIP.hand.get(i) + " ");
+		}
+		
+		System.out.println("\n\nPlayerP2's Hand: ");
+		
+		for (int i = 0; i < 5; i++) {
+			System.out.print(playerP2.hand.get(i) + " ");
+		}		
 	}
 
 	public void testStraight() {
@@ -171,13 +187,11 @@ public class testGame extends TestCase {
 		Game game = new Game();
 
 		game.deck.openFile("strategy.txt");
+		game.deck.populateDeck();
+
 
 		// Branch one test
-		String cards[] = game.deck.drawFive();
-
-		for (int i = 0; i < 5; i++) {
-			playerAIP.hand.add(cards[i]);
-		}
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
 
 		assertEquals("First Branch", game.strategy(playerAIP));
 
@@ -187,11 +201,7 @@ public class testGame extends TestCase {
 			playerAIP.hand.remove(0);
 		}
 
-		cards = game.deck.drawFive();
-
-		for (int i = 0; i < 5; i++) {
-			playerAIP.hand.add(cards[i]);
-		}
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
 
 		// assertEquals("Second Branch", game.strategy(playerAIP));
 
@@ -201,12 +211,22 @@ public class testGame extends TestCase {
 			playerAIP.hand.remove(0);
 		}
 
-		game.deck.populateDeck();
-
 		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		System.out.println("Inside Strategy Test Branch 3\n-----------------------------\nPlayerAIP's Hand Before Swap: ");
+		
+		for (int i = 0; i < 5; i++) {
+			System.out.print(playerAIP.hand.get(i) + " ");
+		}
 
 		assertEquals("Third Branch", game.strategy(playerAIP));
 
+		System.out.println("\n\nPlayerAIP's Hand After Swap: ");
+		
+		for (int i = 0; i < 5; i++) {
+			System.out.print(playerAIP.hand.get(i) + " ");
+		}
+		
 		
 		// Branch four test
 		for (int i = 0; i < 5; i++) {
