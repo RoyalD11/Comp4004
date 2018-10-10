@@ -380,4 +380,147 @@ public class testGame extends TestCase {
 
 	}
 
+	public void testWinning() {
+		Hand playerAIP = new Hand();
+		Hand playerP2 = new Hand();
+
+		Game game = new Game();
+
+		game.deck.openFile("winning.txt");
+		game.deck.populateDeck();
+		
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		playerP2.hand = game.deck.drawFiveFromDeck(playerP2);
+		
+		game.scoring(playerAIP);
+		game.scoring(playerP2);
+		
+		
+		System.out.println("\n\n\nTesting Winner");
+		System.out.println("--------------");
+		
+		System.out.println("\nRoyal Flush vs. Straight Flush");
+		System.out.println("------------------------------");
+		assertEquals("AIP", game.determineWinner(playerAIP, playerP2));
+
+		
+		
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.remove(0);
+		}
+		
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		game.scoring(playerAIP);
+		game.scoring(playerP2);
+		
+		System.out.println("\n\n\nFour of a Kind vs. Straight Flush");
+		System.out.println("---------------------------------");
+		assertEquals("P2", game.determineWinner(playerAIP, playerP2));
+
+		
+		
+		for (int i = 0; i < 5; i++) {
+			playerP2.hand.remove(0);
+		}
+		
+		playerP2.hand = game.deck.drawFiveFromDeck(playerP2);
+		
+		game.scoring(playerAIP);
+		game.scoring(playerP2);
+		
+		System.out.println("\nFour of a Kind vs. Full House");
+		System.out.println("-----------------------------");
+		assertEquals("AIP", game.determineWinner(playerAIP, playerP2));
+
+		
+		
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.remove(0);
+		}
+		
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		game.scoring(playerAIP);
+		game.scoring(playerP2);
+		
+		System.out.println("\n\n\nFull House vs. Flush");
+		System.out.println("--------------------------");
+		assertEquals("P2", game.determineWinner(playerAIP, playerP2));
+
+		
+		
+		for (int i = 0; i < 5; i++) {
+			playerP2.hand.remove(0);
+		}
+		
+		playerP2.hand = game.deck.drawFiveFromDeck(playerP2);
+		
+		game.scoring(playerAIP);
+		game.scoring(playerP2);
+		
+		System.out.println("\nFlush vs. Straight");
+		System.out.println("-----------------------------");
+		assertEquals("AIP", game.determineWinner(playerAIP, playerP2));
+
+		
+		
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.remove(0);
+		}
+		
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		game.scoring(playerAIP);
+		game.scoring(playerP2);
+		
+		System.out.println("\n\n\nStraight vs. Three of a Kind");
+		System.out.println("--------------------------");
+		assertEquals("P2", game.determineWinner(playerAIP, playerP2));
+
+		
+		
+		for (int i = 0; i < 5; i++) {
+			playerP2.hand.remove(0);
+		}
+		
+		playerP2.hand = game.deck.drawFiveFromDeck(playerP2);
+		
+		game.scoring(playerAIP);
+		game.scoring(playerP2);
+		
+		System.out.println("\nThree of a Kind vs. Two Pair");
+		System.out.println("-----------------------------");
+		assertEquals("AIP", game.determineWinner(playerAIP, playerP2));
+
+		
+		
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.remove(0);
+		}
+		
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		game.scoring(playerAIP);
+		game.scoring(playerP2);
+		
+		System.out.println("\n\n\nTwo Pair vs. Pair");
+		System.out.println("--------------------------");
+		assertEquals("P2", game.determineWinner(playerAIP, playerP2));
+
+		
+		
+		for (int i = 0; i < 5; i++) {
+			playerP2.hand.remove(0);
+		}
+		
+		playerP2.hand = game.deck.drawFiveFromDeck(playerP2);
+		
+		game.scoring(playerAIP);
+		game.scoring(playerP2);
+		
+		System.out.println("\nPair vs. High Card");
+		System.out.println("-----------------------------");
+		assertEquals("AIP", game.determineWinner(playerAIP, playerP2));
+	}
 }
