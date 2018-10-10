@@ -225,8 +225,7 @@ public class Game {
 
 		
 		// Branch two - One away
-		else if (false) {
-		}
+		else if (false) {}
 
 		
 		// Branch three - Three of the same suit, exchange two cards
@@ -272,7 +271,27 @@ public class Game {
 		
 		
 		//Branch Six - 2 pairs, exchange the other card
-
+		else if(twoPair(player)) {
+			
+			//Gets the values of the two pairs
+			int firstPair = valueOfKind(player, 2);
+			int secondPair = secondPairValue(player, 2, firstPair);
+			
+			//Loop through the hand if the rank is equal to either of the found values skip it, replace the one that doesnt match
+			for(int i = 0; i<player.hand.size(); i++) {
+				if((player.getRank(player.hand.get(i)) == firstPair) || (player.getRank(player.hand.get(i)) == secondPair)) {
+					continue;
+				}
+				else {
+					player.hand.remove(i);
+					player.hand.add(i, deck.draw());
+				}
+			}
+			
+			return "Sixth Branch";
+			
+		}
+		
 		return "Missed Everything";
 	}
 
@@ -299,6 +318,30 @@ public class Game {
 		return 0;
 	}
 
+	public int secondPairValue(Hand player, int pairLength, int firstValue) {
+		int counter;
+		int valueOfKind = 0;
+
+		// Nested loops to find the value of the Kind and not just if there is one
+		for (int i = 0; i < player.hand.size(); i++) {
+			counter = 0;
+			for (int j = 0; j < player.hand.size(); j++) {
+				if (firstValue != player.getRank(player.hand.get(i))) {
+					if (player.hand.get(i).substring(1, 2).equals(player.hand.get(j).substring(1, 2))) {
+						counter++;
+						valueOfKind = player.getRank(player.hand.get(i));
+					}
+				}
+			}
+
+			if (counter == pairLength)
+				return valueOfKind;
+		}
+
+		return 0;
+	}
+	
+	
 	// Used for strategy branch 3 - finds if there is a flush of 3 cards
 	public boolean threeSuit(Hand player, int breakPoint) {
 
