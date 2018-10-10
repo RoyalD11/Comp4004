@@ -314,30 +314,38 @@ public class Game {
 		
 		//Branch Eight - keep two highest cards, exchange three
 		else {
+			
+			//Find the first highest card
 			String highCardOne = highCard(player);
-			String highCardTwo = secondHighestCard(player, highCardOne);
 			
-			for(int i = 0; i<player.hand.size();i++) {
-				System.out.print("\nBefore " + player.hand.get(i));
-			}
-			
-			
+			//Remove it from the hand
 			for(int i = 0; i<player.hand.size(); i++) {
-				
-				if((highCardOne.equals(player.hand.get(i))) || (highCardTwo.equals(player.hand.get(i)))) continue;
-				
-				else {
+				if(highCardOne.equals(player.hand.get(i))) {
 					player.hand.remove(i);
-					player.hand.add(i, deck.draw());
 				}
 			}
 			
-			for(int i = 0; i<player.hand.size();i++) {
-				System.out.print("\nAfter " + player.hand.get(i));
+			//Find the second highest card
+			String highCardTwo = highCard(player);
+			
+			//Remove it from the hand
+			for(int i = 0; i<player.hand.size(); i++) {
+				if(highCardTwo.equals(player.hand.get(i))) {
+					player.hand.remove(i);
+				}
+			}
+					
+			//Remove all the remaining cards from the hand and draw to replace them
+			for(int i = 0; i<player.hand.size(); i++) {
+				player.hand.remove(i);
+				player.hand.add(i, deck.draw());
 			}
 			
+			//Add the high cards back into the hand
+			player.hand.add(highCardOne);
+			player.hand.add(highCardTwo);
 			
-			return "Eigth Branch";
+			return "Eighth Branch";
 		}
 		
 		return "Broken";
@@ -492,45 +500,6 @@ public class Game {
 		}
 
 		return rank;
-	}
-
-	//Used for strategy branch 8 - returns the rank of the second highest card.
-	public String secondHighestCard(Hand player, String highest) {
-
-		String compareCard = "";
-		String highCard = "";
-
-		// Loop through the hand
-		for (int i = 1; i < player.hand.size(); i++) {
-
-			if(highest.equals(player.hand.get(i))) continue;
-			
-			// Set the initial values to the appropriate cards
-			highCard = player.hand.get(i - 1);
-			compareCard = player.hand.get(i);
-
-			// If the cards have the same rank then compare the suits and save the
-			// appropriate high card based off the check
-			if (player.getRank(highCard) == player.getRank(compareCard)) {
-				if (player.getSuit(highCard) > player.getSuit(compareCard)) {
-					continue;
-				} else {
-					highCard = compareCard;
-				}
-			}
-
-			// Do nothing if the highCard is higher than the one you're comparing
-			else if (player.getRank(highCard) > player.getRank(compareCard)) {
-				continue;
-			}
-
-			// Changed highCard to compareCard if it is lower than the one you are comparing
-			// it to
-			else if (player.getRank(highCard) < player.getRank(compareCard)) {
-				highCard = compareCard;
-			}
-		}
-		return highCard;
 	}
 
 }
