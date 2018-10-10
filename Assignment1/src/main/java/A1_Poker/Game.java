@@ -311,7 +311,36 @@ public class Game {
 			return "Seventh Branch";
 		}
 		
-		return "Missed Everything";
+		
+		//Branch Eight - keep two highest cards, exchange three
+		else {
+			String highCardOne = highCard(player);
+			String highCardTwo = secondHighestCard(player, highCardOne);
+			
+			for(int i = 0; i<player.hand.size();i++) {
+				System.out.print("\nBefore " + player.hand.get(i));
+			}
+			
+			
+			for(int i = 0; i<player.hand.size(); i++) {
+				
+				if((highCardOne.equals(player.hand.get(i))) || (highCardTwo.equals(player.hand.get(i)))) continue;
+				
+				else {
+					player.hand.remove(i);
+					player.hand.add(i, deck.draw());
+				}
+			}
+			
+			for(int i = 0; i<player.hand.size();i++) {
+				System.out.print("\nAfter " + player.hand.get(i));
+			}
+			
+			
+			return "Eigth Branch";
+		}
+		
+		return "Broken";
 	}
 
 	// Helper Function
@@ -464,4 +493,44 @@ public class Game {
 
 		return rank;
 	}
+
+	//Used for strategy branch 8 - returns the rank of the second highest card.
+	public String secondHighestCard(Hand player, String highest) {
+
+		String compareCard = "";
+		String highCard = "";
+
+		// Loop through the hand
+		for (int i = 1; i < player.hand.size(); i++) {
+
+			if(highest.equals(player.hand.get(i))) continue;
+			
+			// Set the initial values to the appropriate cards
+			highCard = player.hand.get(i - 1);
+			compareCard = player.hand.get(i);
+
+			// If the cards have the same rank then compare the suits and save the
+			// appropriate high card based off the check
+			if (player.getRank(highCard) == player.getRank(compareCard)) {
+				if (player.getSuit(highCard) > player.getSuit(compareCard)) {
+					continue;
+				} else {
+					highCard = compareCard;
+				}
+			}
+
+			// Do nothing if the highCard is higher than the one you're comparing
+			else if (player.getRank(highCard) > player.getRank(compareCard)) {
+				continue;
+			}
+
+			// Changed highCard to compareCard if it is lower than the one you are comparing
+			// it to
+			else if (player.getRank(highCard) < player.getRank(compareCard)) {
+				highCard = compareCard;
+			}
+		}
+		return highCard;
+	}
+
 }
