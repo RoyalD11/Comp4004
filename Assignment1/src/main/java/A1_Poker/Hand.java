@@ -7,6 +7,7 @@ public class Hand {
 	//Global variables to be used by all functions in this class. 
 	ArrayList <String> hand = new ArrayList<String>();
 	Deck deck = new Deck();
+	int score;
 	
 	//Print the hand
 	public void printHand() {

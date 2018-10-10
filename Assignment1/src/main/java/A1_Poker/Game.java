@@ -382,6 +382,7 @@ public class Game {
 		}
 	}
 
+	
 	// Helper Function
 	public int valueOfKind(Hand player, int pairLength) {
 
@@ -533,4 +534,60 @@ public class Game {
 		return rank;
 	}
 	
+	
+	//Winning Functions
+	
+	//Determines the players score based off their hand.
+	public void scoring(Hand player) {
+		
+		if(royalFlush(player)) player.score = 10;
+		else if(straightFlush(player)) player.score = 9;
+		else if(duplicateRank(player.hand, 4)) player.score = 8;
+		else if(fullHouse(player)) player.score = 7;
+		else if(flush(player.hand)) player.score = 6;
+		else if(straight(player)) player.score = 5;
+		else if(duplicateRank(player.hand, 3)) player.score = 4;
+		else if(twoPair(player)) player.score = 3;
+		else if(duplicateRank(player.hand, 2)) player.score = 2;
+		else player.score = 0;
+		
+	}
+	
+	//Prints the appropriate winner based on the players score
+	public String determineWinner(Hand playerAIP, Hand playerP2) {
+		
+				
+		if(playerAIP.score > playerP2.score) {
+			System.out.println("PlayerAIP Wins!");
+			playerAIP.printHand();
+			
+			System.out.print("PlayerP2's Hand: ");
+			for (int i = 0; i < 5; i++) {
+				System.out.print(playerP2.hand.get(i) + " ");
+			}
+			
+			return "AIP";
+
+		}
+		
+		else if(playerAIP.score < playerP2.score) {
+			System.out.println("PlayerP2 Wins!");
+			System.out.print("PlayerP2's Hand: ");
+			for (int i = 0; i < 5; i++) {
+				System.out.print(playerP2.hand.get(i) + " ");
+			}
+			System.out.print("\n\n");
+
+			
+			playerAIP.printHand();
+			
+			return "P2";
+
+		}
+		
+		else {
+			System.out.println("Tie");
+			return "Tie";
+		}			
+	}
 }
