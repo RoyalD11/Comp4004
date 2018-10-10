@@ -229,6 +229,14 @@ public class testGame extends TestCase {
 		
 		assertEquals("First Branch", game.strategy(playerAIP));
 		
+		for (int i = 0; i < 5; i++) {
+			playerAIP.hand.remove(0);
+		}
+
+		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		assertEquals("First Branch", game.strategy(playerAIP));
+		
 		
 		
 		// Branch two test
@@ -238,11 +246,11 @@ public class testGame extends TestCase {
 
 		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
 		
-		System.out.println("\nInside Strategy Test Branch 2\n-----------------------------\n\n");
-
+		System.out.println("\nInside Strategy Test Branch 2\n-----------------------------\nNot Implemented\n");
 
 		// assertEquals("Second Branch", game.strategy(playerAIP));
 
+		
 		
 		// Branch three test
 		for (int i = 0; i < 5; i++) {
@@ -251,7 +259,7 @@ public class testGame extends TestCase {
 
 		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
 		
-		System.out.println("Inside Strategy Test Branch 3\n-----------------------------\nPlayerAIP's Hand Before Swap: ");
+		System.out.println("\nInside Strategy Test Branch 3\n-----------------------------\nPlayerAIP's Hand Before Swap: ");
 		
 		for (int i = 0; i < 5; i++) {
 			System.out.print(playerAIP.hand.get(i) + " ");
@@ -266,14 +274,28 @@ public class testGame extends TestCase {
 		}
 		
 		
+		
 		// Branch four test
 		for (int i = 0; i < 5; i++) {
 			playerAIP.hand.remove(0);
 		}
 
 		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		System.out.println("\n\n\nInside Strategy Test Branch 4\n-----------------------------\nPlayerAIP's Hand Before Swap: ");
+		
+		for (int i = 0; i < 5; i++) {
+			System.out.print(playerAIP.hand.get(i) + " ");
+		}
 
 		assertEquals("Fourth Branch", game.strategy(playerAIP));
+		
+		System.out.println("\n\nPlayerAIP's Hand After Swap: ");
+		
+		for (int i = 0; i < 5; i++) {
+			System.out.print(playerAIP.hand.get(i) + " ");
+		}
+		
 		
 		
 		// Branch Five test
@@ -282,9 +304,12 @@ public class testGame extends TestCase {
 		}
 
 		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		System.out.println("\n\n\nInside Strategy Test Branch 5\n-----------------------------\nNot Implemented");
 
 		//assertEquals("Fifth Branch", game.strategy(playerAIP));
 
+		
 		
 		// Branch Six test
 		for (int i = 0; i < 5; i++) {
@@ -292,8 +317,21 @@ public class testGame extends TestCase {
 		}
 
 		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		System.out.println("\n\nInside Strategy Test Branch 6\n-----------------------------\nPlayerAIP's Hand Before Swap: ");
+		
+		for (int i = 0; i < 5; i++) {
+			System.out.print(playerAIP.hand.get(i) + " ");
+		}
 
 		assertEquals("Sixth Branch", game.strategy(playerAIP));
+		
+		System.out.println("\n\nPlayerAIP's Hand After Swap: ");
+		
+		for (int i = 0; i < 5; i++) {
+			System.out.print(playerAIP.hand.get(i) + " ");
+		}
+		
 		
 		
 		// Branch Seven test
@@ -302,8 +340,21 @@ public class testGame extends TestCase {
 		}
 
 		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		System.out.println("\n\n\nInside Strategy Test Branch 7\n-----------------------------\nPlayerAIP's Hand Before Swap: ");
+		
+		for (int i = 0; i < 5; i++) {
+			System.out.print(playerAIP.hand.get(i) + " ");
+		}
 
 		assertEquals("Seventh Branch", game.strategy(playerAIP));
+		
+		System.out.println("\n\nPlayerAIP's Hand After Swap: ");
+		
+		for (int i = 0; i < 5; i++) {
+			System.out.print(playerAIP.hand.get(i) + " ");
+		}
+		
 		
 		
 		// Branch Eight test
@@ -312,8 +363,20 @@ public class testGame extends TestCase {
 		}
 
 		playerAIP.hand = game.deck.drawFiveFromDeck(playerAIP);
+		
+		System.out.println("\n\n\nInside Strategy Test Branch 8\n-----------------------------\nPlayerAIP's Hand Before Swap: ");
+		
+		for (int i = 0; i < 5; i++) {
+			System.out.print(playerAIP.hand.get(i) + " ");
+		}
 
 		assertEquals("Eighth Branch", game.strategy(playerAIP));
+		
+		System.out.println("\n\nPlayerAIP's Hand After Swap: ");
+		
+		for (int i = 0; i < 5; i++) {
+			System.out.print(playerAIP.hand.get(i) + " ");
+		}
 
 	}
 
