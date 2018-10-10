@@ -292,6 +292,25 @@ public class Game {
 			
 		}
 		
+		
+		//Branch Seven - One pair, exchanges other three cards
+		else if(duplicateRank(player.hand, 2)) {
+			int pairValue = valueOfKind(player, 2);
+			
+			//Loop through the hand if the rank is equal to either of the found values skip it, replace the one that doesnt match
+			for(int i = 0; i<player.hand.size(); i++) {
+				if(player.getRank(player.hand.get(i)) == pairValue) {
+					continue;
+				}
+				else {
+					player.hand.remove(i);
+					player.hand.add(i, deck.draw());
+				}
+			}
+			
+			return "Seventh Branch";
+		}
+		
 		return "Missed Everything";
 	}
 
