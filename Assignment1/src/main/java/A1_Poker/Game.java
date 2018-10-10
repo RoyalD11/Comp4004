@@ -220,7 +220,7 @@ public class Game {
 	public String strategy(Hand player) {
 		
 		// Branch one - If the player already has a good hand do not do anything
-		if (straight(player) || flush(player.hand) || fullHouse(player) || straightFlush(player) || royalFlush(player)) {
+		if (straight(player) || flush(player.hand) || fullHouse(player) || duplicateRank(player.hand, 4) || straightFlush(player) || royalFlush(player)) {
 			
 			if(royalFlush(player)) {
 				System.out.println("Hold. Detected a Royal Flush.");
@@ -229,6 +229,11 @@ public class Game {
 			
 			else if(straightFlush(player)) {
 				System.out.println("Hold. Detected a Straight Flush.");
+				player.printHand();
+			}
+			
+			else if(duplicateRank(player.hand, 4)) {
+				System.out.println("Hold. Detected a Four of a Kind.");
 				player.printHand();
 			}
 			
