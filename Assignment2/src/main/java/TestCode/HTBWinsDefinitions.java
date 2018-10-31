@@ -428,7 +428,96 @@ public class HTBWinsDefinitions {
 
 		game.findWinner();
 	}
+	
+	
+	//STRAIGHT
+	@Given("^HTB has straight beats AIP three of a kind \"([^\"]*)\"$")
+	public void htb_has_straight_beats_AIP_three_of_a_kind(String deck) {
+		System.out.println("\n------STRAIGHT-------");
+		System.out.println("------HTB Has Straight vs AIP Three of a Kind-------");
 
+		// Make a new game object
+		game = new Game();
+
+		// Evaluate the hands given to see which hand is better from the 10 cards
+		game.evaluate(deck);
+
+		// Find the winner based of the evaluation done above
+		game.findWinner();
+	}
+
+	@Given("^HTB has straight beats AIP two pairs \"([^\"]*)\"$")
+	public void htb_has_straight_beats_AIP_two_pairs(String deck) {
+		System.out.println("------HTB Has Straight vs AIP Two Pair-------");
+
+		game = new Game();
+
+		game.evaluate(deck);
+
+		game.findWinner();
+	}
+
+	@Given("^HTB has straight beats AIP one pair \"([^\"]*)\"$")
+	public void htb_has_straight_beats_AIP_one_pair(String deck) {
+		System.out.println("------HTB Has Straight vs AIP Pair-------");
+
+		game = new Game();
+
+		game.evaluate(deck);
+
+		game.findWinner();
+	}
+
+	@Given("^HTB has straight beats AIP high card \"([^\"]*)\"$")
+	public void htb_has_straight_beats_AIP_high_card(String deck) {
+		System.out.println("------HTB Has Straight vs AIP High Card-------");
+
+		game = new Game();
+
+		game.evaluate(deck);
+
+		game.findWinner();
+	}
+
+	
+	//THREE OF A KIND
+	@Given("^HTB has three of a kind beats AIP two pairs \"([^\"]*)\"$")
+	public void htb_has_three_of_a_kind_beats_AIP_two_pairs(String deck) {
+		System.out.println("\n------THREE OF A KIND-------");
+		System.out.println("------HTB Has Three of a Kind vs AIP Two Pair-------");
+
+		// Make a new game object
+		game = new Game();
+
+		// Evaluate the hands given to see which hand is better from the 10 cards
+		game.evaluate(deck);
+
+		// Find the winner based of the evaluation done above
+		game.findWinner();
+	}
+
+	@Given("^HTB has three of a kind beats AIP one pair \"([^\"]*)\"$")
+	public void htb_has_three_of_a_kind_beats_AIP_one_pair(String deck) {
+		System.out.println("------HTB Has Three of a Kind vs AIP Pair-------");
+
+		game = new Game();
+
+		game.evaluate(deck);
+
+		game.findWinner();
+	}
+
+	@Given("^HTB has three of a kind beats AIP high card \"([^\"]*)\"$")
+	public void htb_has_three_of_a_kind_beats_AIP_high_card(String deck) {
+		System.out.println("------HTB Has Three of a Kind vs AIP High Card-------");
+
+		game = new Game();
+
+		game.evaluate(deck);
+
+		game.findWinner();
+	}
+	
 	@Then("^HTB wins$")
 	public void HTB_wins() {
 

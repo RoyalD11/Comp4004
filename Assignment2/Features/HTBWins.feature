@@ -148,3 +148,35 @@ Scenario: HTB has flush beats AIP one pair
 Scenario: HTB has flush beats AIP high card
 		Given HTB has flush beats AIP high card "SK SQ SA S2 S10 H9 CJ H4 C6 H8"
 		Then HTB wins
+		
+		
+# STRAIGHT		
+Scenario: HTB has straight beats AIP 3 of a kind
+		Given HTB has straight beats AIP three of a kind "C4 S5 H6 C7 C8 C10 H10 D10 S4 D8"
+		Then HTB wins
+		
+Scenario: HTB has straight beats AIP two pairs
+		Given HTB has straight beats AIP two pairs "C4 S5 H6 C7 C8 S4 S8 H3 D4 H8"
+		Then HTB wins
+		
+Scenario: HTB has straight beats AIP one pair
+		Given HTB has straight beats AIP one pair "C4 S5 H6 C7 C8 S6 S4 H4 C10 H8"
+		Then HTB wins
+		
+Scenario: HTB has straight beats AIP high card
+		Given HTB has straight beats AIP high card "C4 S5 H6 C7 C8 H9 CJ H4 C6 H8"
+		Then HTB wins
+		
+
+# THREE OF A KIND
+Scenario: HTB has three of a kind beats AIP two pairs
+		Given HTB has three of a kind beats AIP two pairs "C10 H10 D10 S9 D8 S4 S8 H3 D4 H8"
+		Then HTB wins
+		
+Scenario: HTB has three of a kind beats AIP one pair
+		Given HTB has three of a kind beats AIP one pair "C10 H10 D10 S4 D8 S6 S4 H4 C10 H8"
+		Then HTB wins
+		
+Scenario: HTB has three of a kind beats AIP high card
+		Given HTB has three of a kind beats AIP high card "C10 H10 D10 S4 D8 H9 CJ H4 C6 H8"
+		Then HTB wins
