@@ -180,3 +180,19 @@ Scenario: HTB has three of a kind beats AIP one pair
 Scenario: HTB has three of a kind beats AIP high card
 		Given HTB has three of a kind beats AIP high card "C10 H10 D10 S4 D8 H9 CJ H4 C6 H8"
 		Then HTB wins
+		
+		
+# TWO PAIR		
+Scenario: HTB has two pair beats AIP one pair
+		Given HTB has two pair beats AIP one pair "S4 S8 H3 D4 H8 S6 D6 H4 C10 D8"
+		Then HTB wins
+		
+Scenario: HTB has two pair beats AIP high card
+		Given HTB has two pair beats AIP high card "S4 S8 H3 D4 H8 H9 CJ H4 C6 C8"
+		Then HTB wins
+		
+
+# PAIR		
+Scenario: HTB has pair beats AIP high card
+		Given HTB has pair beats AIP high card "S6 D6 H4 C10 D8 H9 CJ D4 C6 C8"
+		Then HTB wins

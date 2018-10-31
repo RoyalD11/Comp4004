@@ -518,6 +518,51 @@ public class HTBWinsDefinitions {
 		game.findWinner();
 	}
 	
+	
+	//TWO PAIR
+	@Given("^HTB has two pair beats AIP one pair \"([^\"]*)\"$")
+	public void htb_has_two_pair_beats_AIP_one_pair(String deck) {
+		System.out.println("\n------TWO PAIR-------");
+		System.out.println("------HTB Has Two Pair vs AIP Pair-------");
+
+		// Make a new game object
+		game = new Game();
+
+		// Evaluate the hands given to see which hand is better from the 10 cards
+		game.evaluate(deck);
+
+		// Find the winner based of the evaluation done above
+		game.findWinner();
+	}
+
+	@Given("^HTB has two pair beats AIP high card \"([^\"]*)\"$")
+	public void htb_has_two_pair_beats_AIP_high_card(String deck) {
+		System.out.println("------HTB Has Two Pair vs AIP High Card-------");
+
+		game = new Game();
+
+		game.evaluate(deck);
+
+		game.findWinner();
+	}
+	
+	
+	//PAIR
+	@Given("^HTB has pair beats AIP high card \"([^\"]*)\"$")
+	public void htb_has_pair_beats_AIP_high_card(String deck) {
+		System.out.println("\n------PAIR-------");
+		System.out.println("------HTB Has Pair vs AIP High Card-------");
+
+		// Make a new game object
+		game = new Game();
+
+		// Evaluate the hands given to see which hand is better from the 10 cards
+		game.evaluate(deck);
+
+		// Find the winner based of the evaluation done above
+		game.findWinner();
+	}
+	
 	@Then("^HTB wins$")
 	public void HTB_wins() {
 
