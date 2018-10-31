@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Player {
 
-	Hand highestHand = Hand.HIGH_CARD;
+	public Hand highestHand = Hand.HIGH_CARD;
 	ArrayList<Card> cards = new ArrayList<Card>();
 	
 	int numPairs = 0;
@@ -60,7 +60,7 @@ public class Player {
 		}
 	}
 	
-	void findHighestHand() {
+	public void findHighestHand() {
 		findSeq();
 		findFourAndThree();
 		findPairs();
