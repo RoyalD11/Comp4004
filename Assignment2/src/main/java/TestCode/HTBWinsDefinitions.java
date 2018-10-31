@@ -295,6 +295,139 @@ public class HTBWinsDefinitions {
 
 		game.findWinner();
 	}
+	
+	
+	//FULL HOUSE
+	@Given("^HTB has full house beats AIP flush \"([^\"]*)\"$")
+	public void htb_has_full_house_beats_AIP_flush(String deck) {
+		System.out.println("\n------FULL HOUSE-------");
+		System.out.println("------HTB Has Full House vs AIP Flush-------");
+
+		// Make a new game object
+		game = new Game();
+
+		// Evaluate the hands given to see which hand is better from the 10 cards
+		game.evaluate(deck);
+
+		// Find the winner based of the evaluation done above
+		game.findWinner();
+	}
+
+	@Given("^HTB has full house beats AIP straight \"([^\"]*)\"$")
+	public void htb_has_full_house_beats_AIP_straight(String deck) {
+		System.out.println("------HTB Has Full House vs AIP Straight-------");
+
+		game = new Game();
+
+		game.evaluate(deck);
+
+		game.findWinner();
+	}
+
+	@Given("^HTB has full house beats AIP three of a kind \"([^\"]*)\"$")
+	public void htb_has_full_house_beats_AIP_three_of_a_kind(String deck) {
+		System.out.println("------HTB Has Full House vs AIP Three of a Kind-------");
+
+		game = new Game();
+
+		game.evaluate(deck);
+
+		game.findWinner();
+	}
+
+	@Given("^HTB has full house beats AIP two pairs \"([^\"]*)\"$")
+	public void htb_has_full_house_beats_AIP_two_pairs(String deck) {
+		System.out.println("------HTB Has Full House vs AIP Two Pair-------");
+
+		game = new Game();
+
+		game.evaluate(deck);
+
+		game.findWinner();
+	}
+
+	@Given("^HTB has full house beats AIP one pair \"([^\"]*)\"$")
+	public void htb_has_full_house_beats_AIP_one_pair(String deck) {
+		System.out.println("------HTB Has Full House vs AIP Pair-------");
+
+		game = new Game();
+
+		game.evaluate(deck);
+
+		game.findWinner();
+	}
+
+	@Given("^HTB has full house beats AIP high card \"([^\"]*)\"$")
+	public void htb_has_full_house_beats_AIP_high_card(String deck) {
+		System.out.println("------HTB Has Full House vs AIP High Card-------");
+
+		game = new Game();
+
+		game.evaluate(deck);
+
+		game.findWinner();
+	}
+	
+	
+	//FLUSH
+	@Given("^HTB has flush beats AIP straight \"([^\"]*)\"$")
+	public void htb_has_flush_beats_AIP_straight(String deck) {
+		System.out.println("\n------FLUSH-------");
+		System.out.println("------HTB Has Flush vs AIP Straight-------");
+
+		// Make a new game object
+		game = new Game();
+
+		// Evaluate the hands given to see which hand is better from the 10 cards
+		game.evaluate(deck);
+
+		// Find the winner based of the evaluation done above
+		game.findWinner();
+	}
+
+	@Given("^HTB has flush beats AIP three of a kind \"([^\"]*)\"$")
+	public void htb_has_flush_beats_AIP_three_of_a_kind(String deck) {
+		System.out.println("------HTB Has Flush vs AIP Three of a Kind-------");
+
+		game = new Game();
+
+		game.evaluate(deck);
+
+		game.findWinner();
+	}
+
+	@Given("^HTB has flush beats AIP two pairs \"([^\"]*)\"$")
+	public void htb_has_flush_beats_AIP_two_pairs(String deck) {
+		System.out.println("------HTB Has Flush vs AIP Two Pair-------");
+
+		game = new Game();
+
+		game.evaluate(deck);
+
+		game.findWinner();
+	}
+
+	@Given("^HTB has flush beats AIP one pair \"([^\"]*)\"$")
+	public void htb_has_flush_beats_AIP_one_pair(String deck) {
+		System.out.println("------HTB Has Flush vs AIP Pair-------");
+
+		game = new Game();
+
+		game.evaluate(deck);
+
+		game.findWinner();
+	}
+
+	@Given("^HTB has flush beats AIP high card \"([^\"]*)\"$")
+	public void htb_has_flush_beats_AIP_high_card(String deck) {
+		System.out.println("------HTB Has Flush vs AIP High Card-------");
+
+		game = new Game();
+
+		game.evaluate(deck);
+
+		game.findWinner();
+	}
 
 	@Then("^HTB wins$")
 	public void HTB_wins() {

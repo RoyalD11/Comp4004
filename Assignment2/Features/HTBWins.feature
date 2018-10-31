@@ -101,3 +101,50 @@ Scenario: HTB has four of a kind beats AIP high card
 		Given HTB has four of a kind beats AIP high card "S10 D10 H10 C10 SJ H9 CJ H4 C6 H8"
 		Then HTB wins
 		
+
+# FULL HOUSE
+Scenario: HTB has full house beats AIP flush
+		Given HTB has full house beats AIP flush "S10 D10 HK C10 SK HJ H8 H4 H7 H2"
+		Then HTB wins
+		
+Scenario: HTB has full house beats AIP straight
+		Given HTB has full house beats AIP straight "S10 D10 HK C10 SK C4 S5 H6 C7 C8"
+		Then HTB wins
+		
+Scenario: HTB has full house beats AIP 3 of a kind
+		Given HTB has full house beats AIP three of a kind "S10 D10 HK C10 SK C7 S4 H4 C4 C8"
+		Then HTB wins
+		
+Scenario: HTB has full house beats AIP two pairs
+		Given HTB has full house beats AIP two pairs "S10 D10 HK C10 SK S4 S8 H3 C4 H8"
+		Then HTB wins
+		
+Scenario: HTB has full house beats AIP one pair
+		Given HTB has full house beats AIP one pair "S10 D10 HK C10 SK S6 S4 H4 C10 H8"
+		Then HTB wins
+		
+Scenario: HTB has full house beats AIP high card
+		Given HTB has full house beats AIP high card "S10 D10 HK C10 SK H9 CJ H4 C6 H8"
+		Then HTB wins
+		
+		
+# FLUSH
+Scenario: HTB has flush beats AIP straight
+		Given HTB has flush beats AIP straight "SK SQ SA S2 S10 C4 S5 H6 C7 C8"
+		Then HTB wins
+		
+Scenario: HTB has flush beats AIP 3 of a kind
+		Given HTB has flush beats AIP three of a kind "SK SQ SA S2 S10 C7 S4 H4 C4 C8"
+		Then HTB wins
+		
+Scenario: HTB has flush beats AIP two pairs
+		Given HTB has flush beats AIP two pairs "SK SQ SA S2 S10 S4 S8 H3 C4 H8"
+		Then HTB wins
+		
+Scenario: HTB has flush beats AIP one pair
+		Given HTB has flush beats AIP one pair "SK SQ SA S2 S10 S6 S4 H4 C10 H8"
+		Then HTB wins
+		
+Scenario: HTB has flush beats AIP high card
+		Given HTB has flush beats AIP high card "SK SQ SA S2 S10 H9 CJ H4 C6 H8"
+		Then HTB wins
