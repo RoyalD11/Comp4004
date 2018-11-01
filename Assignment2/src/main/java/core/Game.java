@@ -14,7 +14,7 @@ public class Game {
 	ArrayList<Card> drawnCards = new ArrayList<Card>();
 	ArrayList<Card> initialHand = new ArrayList<Card>();
 	
-	boolean AIPWin = false;
+	public boolean AIPWin = false;
 	
 	public Game() {
 		deck = new Deck();

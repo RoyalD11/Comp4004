@@ -344,7 +344,7 @@ public class AIPlayer extends Player{
 		return ret;
 	}
 	
-	void discard() {
+	public void discard() {
 		for(String c : toDiscard) {
 			Card curr = new Card(c);
 			cards.remove(curr);
@@ -387,7 +387,7 @@ public class AIPlayer extends Player{
 		return ret;
 	}
 	
-	void findDiscardForRoyalFlush() {
+	public void findDiscardForRoyalFlush() {
 		if (cards.get(0).getRank() == 9) toDiscard.add(cards.get(0).getId());
 		else if (in_seq) toDiscard.add(findMissingFromFlush());
 		else toDiscard.add(findMissingFromSeq());
