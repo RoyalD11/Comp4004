@@ -16,6 +16,6 @@ and when AIP has two pair it either only sees one pair or only sees high card
 
 I made a forum post about this and JP is aware of the error
 
-My cucumber definitions files are in the src/main/TestCode
+My cucumber definitions files are in the src/main/java/TestCode
 My cucumber feature files are in the features folder
 My cucumber screenshots are in the screenshot folder
