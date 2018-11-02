@@ -6,7 +6,7 @@ import core.Game;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
-public class AIPHasThreeInSeq {
+public class AIPHasThreeInSeqDefinitions {
 	
 	Game game;
 	
