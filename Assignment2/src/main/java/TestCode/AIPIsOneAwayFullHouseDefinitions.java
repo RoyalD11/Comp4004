@@ -12,16 +12,16 @@ import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
-public class AIPIsOneAwayRoyalFlushDefinitions {
+public class AIPIsOneAwayFullHouseDefinitions {
 	
 	Game game;
 	ArrayList<Card> HTBcards = new ArrayList<Card>();
 	ArrayList<Card> AIPcards = new ArrayList<Card>();
 	
-	@Given("^AIP is one card away from a royal flush$")
-	public void aip_is_one_card_away_from_a_royal_flush(DataTable table) {
+	@Given("^AIP is one card away from a three of a kind$")
+	public void aip_is_one_card_away_from_a_three_of_a_kind(DataTable table) {
 		
-		System.out.println("---------AIP is one away from Royal Flush, Exchanges a Card and Wins---------");
+		System.out.println("---------AIP is one away from Full House, Exchanges a Card and Wins---------");
 		game = new Game();
 		
 		//Takes the DataTable input and stores the data to a 2-d list 
@@ -34,15 +34,14 @@ public class AIPIsOneAwayRoyalFlushDefinitions {
 		}
 	}
 
-	@Given("^AIP exchanges that card \"([^\"]*)\"$")
-	public void aip_exchanges_that_card(String cardToAdd) {
-		
+	@Given("^AIP exchanges lowest card \"([^\"]*)\"$")
+	public void aip_exchanges_lowest_card(String cardToAdd) {
 		//Makes Two Players
 		AIPlayer player = new AIPlayer(AIPcards);
 		AIPlayer HTBplayer = new AIPlayer(HTBcards);
 		
 		//Finds the card in the players hand that needs to be discarded then discards it
-		player.findDiscardForRoyalFlush();
+		player.findDiscardForFullHouse();
 		player.discard();
 		
 		//Adds the new card to the players cards
@@ -64,11 +63,10 @@ public class AIPIsOneAwayRoyalFlushDefinitions {
 		game.AIPWin = true;
 		
 		System.out.println("\nWINNER: AIP\n");
-				
 	}
 
-	@Then("^AIP wins with royal flush$")
-	public void aip_wins_with_royal_flush() {
+	@Then("^AIP wins with full house$")
+	public void aip_wins_with_full_house() {
 		Assert.assertEquals(true, game.AIPWon());
 	}
 

@@ -405,7 +405,7 @@ public class AIPlayer extends Player{
 		return ret;
 	}
 	
-	void findDiscardForStraightFlush() {
+	public void findDiscardForStraightFlush() {
 		if (oneFromStraight) toDiscard.add(findMissingFromSeq());
 		else if (oneFromFlush) toDiscard.add(findMissingFromFlush());
 	}
@@ -414,7 +414,7 @@ public class AIPlayer extends Player{
 		return three_of_kind || (numPairs == 2);
 	}
 	
-	void findDiscardForFullHouse() {
+	public void findDiscardForFullHouse() {
 
 		for(int i=0; i<cards.size(); i++) {
 			boolean inSet = false;
@@ -434,7 +434,7 @@ public class AIPlayer extends Player{
 		return oneFromFlush && (!in_seq);
 	}
 	
-	void findDiscardForFlush() {
+	public void findDiscardForFlush() {
 		toDiscard.add(findMissingFromFlush());
 	}
 
@@ -442,7 +442,7 @@ public class AIPlayer extends Player{
 		return oneFromStraight;
 	}
 	
-	void findDiscardForStraight() {
+	public void findDiscardForStraight() {
 		toDiscard.add(findMissingFromSeq());
 	}
 	
