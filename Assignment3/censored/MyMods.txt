@@ -1,0 +1,9 @@
+Code Added
+----------
+None
+
+
+Errors Fixed
+-------------
+Added a comment / where one was missing next to the 13th requirement in file RankingTests.java
+Deleted an extra bracket at end of file Strategy2.java

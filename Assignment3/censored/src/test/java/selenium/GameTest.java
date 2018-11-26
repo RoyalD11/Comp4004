@@ -22,15 +22,25 @@ public class GameTest extends AbstractSeleniumTest {
 
     @Autowired
     private IndexPage indexPage;
+    public static final int TIME = 3;
     
  
 
     @Test
     public void processAI(){
+    	
     	//connect
-    	//9: missing code  including check all AI players have made their choices   
- 
-                  
+    	this.indexPage.connect.click();
+    	this.delay(TIME);
+		this.indexPage.open.click();
+		this.delay(TIME);
+		this.indexPage.start.click();
+		this.delay(TIME);
+		
+    	//9: missing code  including check all AI players have made their choices 
+		assertThat(this.indexPage.hasText("All AI players have made their choices."), is(true));
+		this.delay(TIME);
+		this.indexPage.disconnect.click();                  
     }
  
     
@@ -53,12 +63,5 @@ public class GameTest extends AbstractSeleniumTest {
     public void canImproveCards(){
     	//12: missing code for connect, improve and disconnect     
     }
-    
-    
-   
   
-    
-    
-    
-    
 }
