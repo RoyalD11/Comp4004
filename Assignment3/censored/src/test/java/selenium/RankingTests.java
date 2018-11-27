@@ -29,6 +29,7 @@ public class RankingTests extends AbstractSeleniumTest {
 
 	@Autowired
 	private IndexPage indexPage;
+	public static final int TIME = 5;
 
 	@Test
 	public void Rig1() {
@@ -39,7 +40,7 @@ public class RankingTests extends AbstractSeleniumTest {
 
 		this.indexPage.connect.click();
 		this.waitForDisplayed(this.indexPage.open).isEnabled();
-		this.delay(2);
+		this.delay(TIME);
 		this.indexPage.open.click(); // defaults is 1 player
 		this.waitForDisplayed(this.indexPage.rig).isEnabled();
 		this.indexPage.rig.click();
@@ -71,44 +72,71 @@ public class RankingTests extends AbstractSeleniumTest {
 		assertThat(this.indexPage.hasText("Setting all cards"), is(true));
 		/****************************** check user options ************************/
 
+		
 		// Handle prompt to improve user 2 with "0:rank-a clubs"
-		// 13: missing code
+		/*-----------------------------------------------------*/
+		String [] playerIDs = this.indexPage.getUsetTexts();
 
-		// user 1 chooses to stay
-		// 14: missing code
-
-		// user 2 chooses to hit
-		// 15: missing code
-
-		// user 3 chooses to Stay
-		// 16:missing code
-
-		// Player hits and gets
-		// 0:rank-q diams, 1:rank-j clubs, 2:rank-4 spades, 3:rank-8 clubs, 4:rank-2
-		// clubs");
-		this.delay(1);
-		// 17a: missing code
-		this.indexPage.hit.click();
-		this.indexPage.card1.click();
-		this.indexPage.card3.click();
-		this.indexPage.done.click();
+		
+		// 14: user 1 chooses to stay
+		assertThat(this.indexPage.hasText(playerIDs[0] + " choose to STAY"), is(true));
+		
+		
+		// 15: user 2 chooses to hit
 		this.waitForAlert();
-		// 17b: missing code
+		a = this.webDriver.switchTo().alert();
+		a.sendKeys("0:rank-a clubs");
+		a.accept();
+		assertThat(this.indexPage.hasText(playerIDs[1] + " choose to HIT"), is(true));
 
+
+		// 16: user 3 chooses to Stay
+		assertThat(this.indexPage.hasText(playerIDs[2] + " choose to STAY"), is(true));
+
+
+		// 17a: Player hits and gets 0:rank-q diams, 1:rank-j clubs, 2:rank-4 spades, 3:rank-8 clubs, 4:rank-2 clubs");
+		//Click the HIT button
+		this.delay(TIME);
+		this.indexPage.hit.click();
+		assertThat(this.indexPage.hasText("You decided to HIT."), is(true));
+
+		
+		//Click all the checkboxes
+		this.delay(TIME);
+		this.indexPage.playerHandCards.findElement(By.id("PlayerCard1")).findElement(By.tagName("input")).click();
+		this.indexPage.playerHandCards.findElement(By.id("PlayerCard2")).findElement(By.tagName("input")).click();
+		this.indexPage.playerHandCards.findElement(By.id("PlayerCard3")).findElement(By.tagName("input")).click();
+		this.indexPage.playerHandCards.findElement(By.id("PlayerCard4")).findElement(By.tagName("input")).click();
+		this.indexPage.playerHandCards.findElement(By.id("PlayerCard5")).findElement(By.tagName("input")).click();
+		
+		//Click DONE button
+		this.delay(TIME);
+		this.indexPage.done.click();
+		
+		
+		// 17b: Wait for the alert and send the cards that will replace the Players Hand.
+		this.waitForAlert();
+		a = this.webDriver.switchTo().alert();
+		a.sendKeys("0:rank-q diams, 1:rank-j clubs, 2:rank-4 spades, 3:rank-8 clubs, 4:rank-2 clubs");
+		a.accept();
+
+		
 		/***************** Check results ******************/
-		this.delay(5);
-		// user 1 wins with a royal flush: ranked 1
-		// 18: missing code
+		this.delay(TIME);
+		// 18: user 1 wins with a royal flush: ranked 1
+		assertThat(this.indexPage.hasText(playerIDs[0] + " won with a score of ROYAL_FLUSH, ranked 1!"), is(true));
 
-		// user 2 loses with two pairs, ranked 3
-		// 19: missing code
+		// 19: user 2 loses with two pairs, ranked 3
+		assertThat(this.indexPage.hasText(playerIDs[1] + " lost with a score of TWO_PAIR, ranked 3!"), is(true));
 
-		// user 3 loses with straight, ranked 2
-		// 20: missing code
+		// 20: user 3 loses with straight, ranked 2
+		assertThat(this.indexPage.hasText(playerIDs[2] + " lost with a score of STRAIGHT, ranked 2!"), is(true));
 
-		// Player loses with high card, ranked 4
-		// 21: missing code
-
+		// 21: Player loses with high card, ranked 4
+		assertThat(this.indexPage.hasText(playerIDs[3] + " lost with a score of HIGH_CARD, ranked 4!"), is(true));
+		
+		this.delay(TIME);
+		this.indexPage.disconnect.click();
 	}
 
 	@Test
@@ -120,7 +148,7 @@ public class RankingTests extends AbstractSeleniumTest {
 
 		this.indexPage.connect.click();
 		this.waitForDisplayed(this.indexPage.open).isEnabled();
-		this.delay(2);
+		this.delay(TIME);
 		this.indexPage.open.click(); // defaults is 1 player
 		this.waitForDisplayed(this.indexPage.rig).isEnabled();
 		this.indexPage.rig.click();
@@ -150,20 +178,52 @@ public class RankingTests extends AbstractSeleniumTest {
 		a.accept();
 
 		assertThat(this.indexPage.hasText("Setting all cards"), is(true));
-		this.delay(5);
+		this.delay(TIME);
 		/****************************** check user options ************************/
+		
 
-		// Handle prompt to improve user 3 with "2:rank-a clubs,3:rank-q spades,4:rank-5
-		// spades"
-		// 22: missing code
+		// 22: Handle prompt to improve user 3 with "2:rank-a clubs, 3:rank-q spades, 4:rank-5 spades"
+		/*-----------------------------------------------------*/
+		String [] playerIDs = this.indexPage.getUsetTexts();
 
-		// user 1 stays, user 2 stays, user 3 hits, player stays
-		// 23: missing code
+		
+		// 23: user 1 stays, user 2 stays, user 3 hits, player stays
+		assertThat(this.indexPage.hasText(playerIDs[0] + " choose to STAY"), is(true));
+		assertThat(this.indexPage.hasText(playerIDs[1] + " choose to STAY"), is(true));
+
+		//User 3 hits
+		this.waitForAlert();
+		a = this.webDriver.switchTo().alert();
+		a.sendKeys("2:rank-a clubs, 3:rank-q spades, 4:rank-5 spades");
+		a.accept();
+		assertThat(this.indexPage.hasText(playerIDs[2] + " choose to HIT"), is(true));
+		
+		//Player chose to stay
+		this.delay(TIME);
+		this.indexPage.stay.click();
+		assertThat(this.indexPage.hasText("You decided to STAY. Sending to server"), is(true));
+
+		
 
 		/***************** Check results ******************/
 
 		// 24: missing code for user 1 wins, 3 others lose
+		this.delay(TIME);
+		
+		//User 1 wins
+		assertThat(this.indexPage.hasText(playerIDs[0] + " won with a score of FOUR_OF_A_KIND, ranked 1!"), is(true));
 
+		//User 2 loses
+		assertThat(this.indexPage.hasText(playerIDs[1] + " lost with a score of FULL_HOUSE, ranked 2!"), is(true));
+
+		//User 3 loses
+		assertThat(this.indexPage.hasText(playerIDs[2] + " lost with a score of ONE_PAIR, ranked 4!"), is(true));
+
+		//Player loses
+		assertThat(this.indexPage.hasText(playerIDs[3] + " lost with a score of FLUSH, ranked 3!"), is(true));
+		
+		this.delay(TIME);
+		this.indexPage.disconnect.click();
 	}
 
 	@Test
@@ -174,7 +234,7 @@ public class RankingTests extends AbstractSeleniumTest {
 		 */
 		this.indexPage.connect.click();
 		this.waitForDisplayed(this.indexPage.open).isEnabled();
-		this.delay(2);
+		this.delay(TIME);
 		this.indexPage.open.click(); // defaults is 1 player
 		this.waitForDisplayed(this.indexPage.rig).isEnabled();
 		this.indexPage.rig.click();
@@ -206,26 +266,73 @@ public class RankingTests extends AbstractSeleniumTest {
 		assertThat(this.indexPage.hasText("Setting all cards"), is(true));
 		/****************************** check user options ************************/
 
+		String [] playerIDs = this.indexPage.getUsetTexts();
+		
 		// Handle prompt to improve user 1
-		// with “0:rank-7 clubs,1:rank-j clubs,4:rank-5 diams"
-		// 25: missing code
+		// with 0:rank-7 clubs, 1:rank-j clubs, 4:rank-5 diams"
+		// 25: user 1 hit
+		this.waitForAlert();
+		a = this.webDriver.switchTo().alert();
+		a.sendKeys("0:rank-7 clubs, 1:rank-j clubs, 4:rank-5 diams");
+		a.accept();
+		assertThat(this.indexPage.hasText(playerIDs[0] + " choose to HIT"), is(true));
 
 		// Handle prompt to improve user 2
 		// with 0:rank-4 spades,1:rank-a clubs"
-		// 26: missing code
+		// 26: user 2 hit
+		this.waitForAlert();
+		a = this.webDriver.switchTo().alert();
+		a.sendKeys("0:rank-4 spades,1:rank-a clubs");
+		a.accept();
+		assertThat(this.indexPage.hasText(playerIDs[1] + " choose to HIT"), is(true));
 
-		// user 1, user 2 hit and user 3 stays
-		// 27: missing code
+		// 27: user 3 stays
+		assertThat(this.indexPage.hasText(playerIDs[2] + " choose to STAY"), is(true));
 
 		// Player gets
-		// “0:rank-4 spades, 1:rank-7 clubs, 2:rank-a clubs,3:rank-q spades,4:rank-5
-		// spades")
-		// 28: missing code
+		// 0:rank-4 spades, 1:rank-7 clubs, 2:rank-a clubs, 3:rank-q spades, 4:rank-5 spades"
+		// 28: player hits
+		this.delay(TIME);
+		this.indexPage.hit.click();
+		assertThat(this.indexPage.hasText("You decided to HIT."), is(true));
+
+		
+		//Click all the checkboxes
+		this.delay(TIME);
+		this.indexPage.playerHandCards.findElement(By.id("PlayerCard1")).findElement(By.tagName("input")).click();
+		this.indexPage.playerHandCards.findElement(By.id("PlayerCard2")).findElement(By.tagName("input")).click();
+		this.indexPage.playerHandCards.findElement(By.id("PlayerCard3")).findElement(By.tagName("input")).click();
+		this.indexPage.playerHandCards.findElement(By.id("PlayerCard4")).findElement(By.tagName("input")).click();
+		this.indexPage.playerHandCards.findElement(By.id("PlayerCard5")).findElement(By.tagName("input")).click();
+		
+		//Click DONE button
+		this.delay(TIME);
+		this.indexPage.done.click();
+		
+		this.waitForAlert();
+		a = this.webDriver.switchTo().alert();
+		a.sendKeys("0:rank-4 spades, 1:rank-7 clubs, 2:rank-a clubs, 3:rank-q spades, 4:rank-5 spades");
+		a.accept();
 
 		/***************** Check results ******************/
 
 		// 29: missing code for the outcome
+		this.delay(TIME);
+		
+		//User 1 loses
+		assertThat(this.indexPage.hasText(playerIDs[0] + " lost with a score of ONE_PAIR, ranked 3!"), is(true));
 
+		//User 2 loses
+		assertThat(this.indexPage.hasText(playerIDs[1] + " lost with a score of THREE_OF_A_KIND, ranked 2!"), is(true));
+
+		//User 3 wins
+		assertThat(this.indexPage.hasText(playerIDs[2] + " won with a score of STRAIGHT_FLUSH, ranked 1!"), is(true));
+
+		//Player loses
+		assertThat(this.indexPage.hasText(playerIDs[3] + " lost with a score of HIGH_CARD, ranked 4!"), is(true));
+		
+		this.delay(TIME);
+		this.indexPage.disconnect.click();
 	}
 
 }

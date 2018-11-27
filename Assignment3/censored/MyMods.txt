@@ -1,6 +1,11 @@
 Code Added
 ----------
-None
+Added public static final int TIME = 3; to RankingTests.java
+	Changed all delays in RankingTests.java to have the constant as the parameter.
+
+Removed this.indexPage.card1.click();
+		this.indexPage.card3.click();
+		From RankingTests.java as this is not the correct way to check the checkboxes
 
 
 Errors Fixed
