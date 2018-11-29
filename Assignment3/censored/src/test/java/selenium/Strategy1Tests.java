@@ -49,6 +49,7 @@ public class Strategy1Tests extends AbstractSeleniumTest {
 		a.accept();
 
 		// other 1 Flush
+		this.waitForAlert();
 		a = this.webDriver.switchTo().alert();
 		a.sendKeys("rank-3 hearts, rank-7 hearts, rank-a hearts, rank-j hearts, rank-9 hearts");
 		a.accept();
@@ -121,6 +122,7 @@ public class Strategy1Tests extends AbstractSeleniumTest {
 		a.accept();
 
 		// other 1 Royal Flush
+		this.waitForAlert();
 		a = this.webDriver.switchTo().alert();
 		a.sendKeys("rank-10 hearts, rank-j hearts, rank-q hearts, rank-k hearts, rank-a hearts");
 		a.accept();
@@ -192,9 +194,10 @@ public class Strategy1Tests extends AbstractSeleniumTest {
 		a.sendKeys("rank-2 hearts, rank-3 spades, rank-4 clubs, rank-7 spades, rank-k clubs");
 		a.accept();
 
-		// other 1 Royal Flush
+		// other 1 Two Pair
+		this.waitForAlert();
 		a = this.webDriver.switchTo().alert();
-		a.sendKeys("rank-10 hearts, rank-j hearts, rank-q hearts, rank-k hearts, rank-a hearts");
+		a.sendKeys("rank-10 hearts, rank-10 clubs, rank-k hearts, rank-k diams, rank-a hearts");
 		a.accept();
 
 		// other 2 Three of a Kind
@@ -215,8 +218,12 @@ public class Strategy1Tests extends AbstractSeleniumTest {
 		String [] playerIDs = this.indexPage.getUsetTexts();
 
 		
-		// user 1 chooses to stay with royal flush
-		assertThat(this.indexPage.hasText(playerIDs[0] + " choose to STAY"), is(true));
+		// user 1 has two pair exchanges one card
+		this.waitForAlert();
+		a = this.webDriver.switchTo().alert();
+		a.sendKeys("4:rank-j clubs");
+		a.accept();
+		assertThat(this.indexPage.hasText(playerIDs[0] + " choose to HIT"), is(true));
 		
 		//User 2 has three of a kind and exchanges other cards
 		this.waitForAlert();
@@ -243,11 +250,11 @@ public class Strategy1Tests extends AbstractSeleniumTest {
 		
 		this.delay(TIME);
 		
-		//User 1 wins
-		assertThat(this.indexPage.hasText(playerIDs[0] + " won with a score of ROYAL_FLUSH, ranked 1!"), is(true));
+		//User 1 loses
+		assertThat(this.indexPage.hasText(playerIDs[0] + " lost with a score of TWO_PAIR, ranked 2!"), is(true));
 
-		//User 2 loses
-		assertThat(this.indexPage.hasText(playerIDs[1] + " lost with a score of FULL_HOUSE, ranked 2!"), is(true));
+		//User 2 wins
+		assertThat(this.indexPage.hasText(playerIDs[1] + " won with a score of FULL_HOUSE, ranked 1!"), is(true));
 
 		//User 3 loses
 		assertThat(this.indexPage.hasText(playerIDs[2] + " lost with a score of ONE_PAIR, ranked 3!"), is(true));

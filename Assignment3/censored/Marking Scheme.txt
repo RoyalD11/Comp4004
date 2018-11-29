@@ -1,0 +1,25 @@
+Option 2
+
+demo: 30%
+
+
+completing ConnectionBasics/GameTest/Ranking Test    (3 x 5%)
+
+explaining and running a test plan for Strategy 1                5%
+
+explaining and running a test plan for Strategy 2                5%
+
+total for correct running Selenium tests: 25% (including completeness and systematicity)
+
+
+You need to consider what you could test with JUnit and Cucumber and discuss (in MyFIndings for a total of 45%):
+
+1) what you can test with Selenium 5%
+
+2) what you can test with Selenium and Junit 5%
+
+3) what you cannot test with Selenium by itself 5%
+
+4) what you cannot test with Selenium combined with Junit 10%
+
+5) how you’d go about using Selenium and other testing tools to test your game’s interface AND your game’s logic in a systematic way     20%.

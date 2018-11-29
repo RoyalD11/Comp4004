@@ -171,7 +171,7 @@ public class RankingTests extends AbstractSeleniumTest {
 		a.sendKeys("rank-j clubs, rank-j spades, rank-3 clubs, rank-3 spades, rank-3 diams");
 		a.accept();
 
-		// other 3 one Pair
+		// other 3 Two Pair
 		this.waitForAlert();
 		a = this.webDriver.switchTo().alert();
 		a.sendKeys("rank-2 clubs, rank-2 spades, rank-6 clubs, rank-q spades, rank-q diams");
